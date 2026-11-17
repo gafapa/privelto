@@ -239,6 +239,12 @@ tr:not(.off) .type-badge { background: var(--mark); color: var(--warning); }
 .confidence.low { padding: 0 5px; border-radius: 3px; color: var(--warning); background: var(--warning-soft); font-weight: 600; }
 td.orig { overflow-wrap: anywhere; font-family: var(--mono); font-size: 12.5px; }
 td .src { display: block; margin-top: 1px; color: var(--muted); font-family: var(--font); font-size: 11px; }
+.ocr-readings { margin-block-start: 6px; font-family: var(--font); font-size: 14px; }
+.ocr-readings summary { cursor: pointer; color: var(--warning); text-decoration: underline; text-underline-offset: 2px; }
+.ocr-readings summary:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+.ocr-readings dl { margin-block: 8px; }
+.ocr-readings dt { color: var(--muted); font-weight: 500; }
+.ocr-readings dd { margin: 0 0 6px; white-space: pre-wrap; overflow-wrap: anywhere; unicode-bidi: plaintext; }
 td.orig .btn { margin-top: 6px; }
 td.tok { color: var(--text); font-family: var(--mono); font-size: 11.5px; white-space: nowrap; }
 tr.off td.tok { color: var(--muted); }

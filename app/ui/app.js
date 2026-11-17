@@ -10,6 +10,7 @@
     manualEditId: null, batch: null, analyzing: false, autoPicked: false,
   };
   let api = null;
+  const expandedOcrReadings = new Set();
 
   // ------------------------------------------------------------ helpers
   function setError(message) {
@@ -68,9 +69,10 @@
   // Findings below this confidence are flagged for a closer look and get their own filter.
   const LOW_CONFIDENCE = 0.8;
   const REVIEW_FILTER = '__review';
+  function needsReview(finding) { return finding.confidence < LOW_CONFIDENCE || Boolean(finding.ocr_review_ids?.length); }
   function visibleFindings() {
     const all = state.details?.findings || [];
-    if (state.filter === REVIEW_FILTER) return all.filter((f) => f.confidence < LOW_CONFIDENCE);
+    if (state.filter === REVIEW_FILTER) return all.filter(needsReview);
     return state.filter ? all.filter((f) => f.type === state.filter) : all;
   }
 
@@ -434,7 +436,7 @@
   function renderFilterOptions(findings) {
     const counts = new Map();
     for (const f of findings) counts.set(f.type, (counts.get(f.type) || 0) + 1);
-    counts.set(REVIEW_FILTER, findings.filter((f) => f.confidence < LOW_CONFIDENCE).length);
+    counts.set(REVIEW_FILTER, findings.filter(needsReview).length);
     const filter = $('typeFilter');
     filter.options[0].textContent = t("Todos los tipos ({0})", findings.length);
     for (const option of [...filter.options].slice(1)) {
@@ -480,14 +482,18 @@
     const body = $('rowsBody');
     body.replaceChildren();
     const list = visibleFindings();
+    const ocrReviews = new Map((state.details.ocrReviews || []).map((review) => [review.id, review]));
     list.forEach((f, index) => {
       const checkbox = el('input', { type: 'checkbox', checked: f.enabled, disabled: state.saving });
       checkbox.setAttribute('aria-label', t("Incluir {0} de la página {1}", t(f.label), f.page + 1));
       checkbox.addEventListener('click', (event) => event.stopPropagation());
       checkbox.addEventListener('change', () => toggle([f.id], checkbox.checked));
       const confidence = Math.round(f.confidence * 100);
-      const conf = el('span', { className: 'confidence' + (f.confidence < LOW_CONFIDENCE ? ' low' : ''), textContent: f.confidence < LOW_CONFIDENCE ? `${confidence} % · revisar` : `${confidence} %` });
-      conf.title = f.warning === 'checksum' ? t("Formato reconocido; dígito de control no válido") : (f.detail || '');
+      const disagreement = Boolean(f.ocr_review_ids?.length);
+      const conf = el('span', { className: 'confidence' + (needsReview(f) ? ' low' : ''), textContent: disagreement
+        ? t("Lecturas distintas · revisar") : f.confidence < LOW_CONFIDENCE ? `${confidence} % · revisar` : `${confidence} %` });
+      conf.title = disagreement ? t("Los motores OCR discrepan. Revisa ambas lecturas y la zona marcada.")
+        : f.warning === 'checksum' ? t("Formato reconocido; dígito de control no válido") : (f.detail || '');
       const meta = el('div', { className: 'finding-meta' }, [
         el('span', { className: 'type-badge', textContent: t(f.label) }), el('span', { textContent: t("pág. {0}", f.page + 1) }), conf,
       ]);
@@ -495,6 +501,25 @@
         meta, el('span', { className: 'orig-value', textContent: f.value ?? `(${f.detail || f.label})` }),
         el('span', { className: 'src', textContent: sourceLabel(f.source) }),
       ]);
+      const readings = (f.ocr_review_ids || []).map((id) => ocrReviews.get(id)).filter(Boolean);
+      if (readings.length) {
+        const key = `${state.details.id}:${f.id}:${f.ocr_review_ids.join('|')}`;
+        const disclosure = el('details', { className: 'ocr-readings', open: expandedOcrReadings.has(key) }, [
+          el('summary', { textContent: t("Comparar lecturas OCR") }),
+        ]);
+        for (const reading of readings) {
+          const original = el('dd', { textContent: reading.original });
+          const alternative = el('dd', { textContent: reading.alternative?.trim() ? reading.alternative : t("Sin lectura") });
+          original.dir = alternative.dir = 'auto';
+          disclosure.append(el('dl', {}, [el('dt', { textContent: t("OCR inicial") }), original,
+            el('dt', { textContent: t("Segunda lectura") }), alternative]));
+        }
+        disclosure.addEventListener('click', (event) => event.stopPropagation());
+        disclosure.addEventListener('toggle', () => {
+          if (disclosure.open) expandedOcrReadings.add(key); else expandedOcrReadings.delete(key);
+        });
+        value.append(disclosure);
+      }
       const row = el('tr', { className: (f.enabled ? '' : 'off') + (index === state.current ? ' current' : '') }, [
         el('td', {}, [checkbox]), value, el('td', { className: 'tok', textContent: f.token }),
       ]);
@@ -655,7 +680,7 @@
       if (f.page !== state.page) continue;
       for (const [x0, y0, x1, y1] of f.view) {
         const box = el('div', {
-          className: `box ${f.type}` + (f.enabled ? '' : ' off') + (f.confidence < LOW_CONFIDENCE ? ' low' : '') + (current && current.id === f.id ? ' current' : ''),
+          className: `box ${f.type}` + (f.enabled ? '' : ' off') + (needsReview(f) ? ' low' : '') + (current && current.id === f.id ? ' current' : ''),
           title: `${f.label} · ${f.token} · ${Math.round(f.confidence * 100)} %`,
         });
         Object.assign(box.style, { left: `${x0 * 100}%`, top: `${y0 * 100}%`, width: `${(x1 - x0) * 100}%`, height: `${(y1 - y0) * 100}%` });
@@ -959,7 +984,7 @@
     document.addEventListener('drop', (e) => e.preventDefault());
     document.addEventListener('keydown', (event) => {
       const target = event.target;
-      if ((target instanceof Element && target.matches('input, select, textarea')) || !state.details || $('resultsCard').hidden ||
+      if ((target instanceof Element && (target.matches('input, select, textarea') || target.closest('.ocr-readings'))) || !state.details || $('resultsCard').hidden ||
         $('saveDialog').open || $('settingsDialog').open) return;
       const key = event.key.toLowerCase();
       if (key.startsWith('arrow') && target instanceof Element && target.closest('.zoomed-page')) return;

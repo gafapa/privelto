@@ -459,7 +459,7 @@ class Api:
                 base_ids = {finding.id for finding in analysis.findings}
                 snapshot = replace(analysis, findings=copy.deepcopy(analysis.findings),
                                    sources=copy.deepcopy(analysis.sources), deferred=copy.deepcopy(analysis.deferred),
-                                   notes=list(analysis.notes))
+                                   notes=list(analysis.notes), ocr_reviews=copy.deepcopy(analysis.ocr_reviews))
             timer = perf.StageTimer()
             progress = self._progress(doc, timer, len(pending) + position, steps, "IA avanzada · ")
             failure: BaseException | None = None
@@ -553,6 +553,8 @@ class Api:
             "id": doc.id, "name": doc.name, "pages": [{"width": p.width, "height": p.height} for p in analysis.pages],
             "findings": findings, "notes": analysis.notes, "seconds": analysis.seconds, "revision": doc.revision,
             "nativeChars": analysis.native_chars, "report": doc.report, "signed": analysis.signed,
+            "ocrReviews": [{**review.to_json(), "view": self._view_rects(analysis, review.page, [review.rect])}
+                           for review in analysis.ocr_reviews],
             "history": {"undo": bool(doc.history.undo), "redo": bool(doc.history.redo)},
             "saved": doc.saved_revision == doc.revision,
         }

@@ -429,6 +429,16 @@
     "{0} en {1} {2}. ": "{0} en {1} {2}. ",
     " · guardado": " · guardado",
     "Todos los archivos": "Todos los archivos",
-    "Paquete de IA": "Paquete de IA"
+    "Paquete de IA": "Paquete de IA",
+    "OCR e IA difieren o no leen con claridad {0} línea(s) de la página {1}. Se conservan ambas lecturas para revisión.": "OCR e IA difieren o no leen con claridad {0} línea(s) de la página {1}. Se conservan ambas lecturas para revisión.",
+    "Lectura de manuscritos no disponible en una línea de la página {0}: {1}. Se conserva el OCR original.": "Lectura de manuscritos no disponible en una línea de la página {0}: {1}. Se conserva el OCR original.",
+    "La revisión OCR se detuvo tras tres errores consecutivos. Las líneas pendientes conservan el OCR original.": "La revisión OCR se detuvo tras tres errores consecutivos. Las líneas pendientes conservan el OCR original.",
+    "Revisión OCR no disponible: se conserva el texto original sin una segunda lectura.": "Revisión OCR no disponible: se conserva el texto original sin una segunda lectura.",
+    "Lecturas distintas · revisar": "Lecturas distintas · revisar",
+    "Los motores OCR discrepan. Revisa ambas lecturas y la zona marcada.": "Los motores OCR discrepan. Revisa ambas lecturas y la zona marcada.",
+    "Comparar lecturas OCR": "Comparar lecturas OCR",
+    "OCR inicial": "OCR inicial",
+    "Segunda lectura": "Segunda lectura",
+    "Sin lectura": "Sin lectura"
   }
 }

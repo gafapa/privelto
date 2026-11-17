@@ -1,0 +1,4399 @@
+{
+  "date": "2026-10-31",
+  "status": "completed-local-evaluation",
+  "productionChanged": false,
+  "userDocumentsUsed": false,
+  "sourceSampleHashesPaired": true,
+  "qualification": "Single local run per profile; public line crops and two fictitious printed pages. No end-to-end redaction qualification.",
+  "environment": {
+    "os": "Windows x64",
+    "gpu": "RTX 2070 Max-Q",
+    "vramMiB": 8192,
+    "driver": "617.42",
+    "torch": "2.12.0+cu126",
+    "torchvision": "0.27.0+cu126",
+    "transformers": "4.52.1",
+    "accelerate": "1.13.0",
+    "tokenizers": "0.21.4",
+    "huggingface-hub": "0.36.0"
+  },
+  "harnessSha256": "275cb52b36e8e3aaeb487418122bb2c683953e5207404e6e607c4430068a1142",
+  "rawEvidenceDirectory": "eval/ocr-candidates-2026-10-31-rerun",
+  "profiles": {
+    "ppocr": {
+      "engine": "ppocr",
+      "date": "2026-10-31T17:08:05+0100",
+      "qualification": "Public line crops and fictitious scan fixtures; not production redaction qualification.",
+      "resources": {},
+      "startup_seconds": 1.704918599978555,
+      "summary": {
+        "census": {
+          "samples": 20,
+          "mean_cer": 0.3647940947940948,
+          "exact": 0.0,
+          "literal_value_recall": 0.24242424242424243,
+          "value_count": 33,
+          "median_seconds": 0.06175065002753399,
+          "failures": 0
+        },
+        "iam": {
+          "samples": 20,
+          "mean_cer": 0.2036395593761953,
+          "exact": 0.05,
+          "literal_value_recall": null,
+          "value_count": 0,
+          "median_seconds": 0.058084099990082905,
+          "failures": 1
+        },
+        "synthetic-lines": {
+          "samples": 20,
+          "mean_cer": 0.08308261431662967,
+          "exact": 0.6,
+          "literal_value_recall": 0.6,
+          "value_count": 20,
+          "median_seconds": 0.0222461000084877,
+          "failures": 0
+        },
+        "synthetic-pages": {
+          "samples": 2,
+          "mean_cer": 0.0016339869281045752,
+          "exact": 0.5,
+          "literal_value_recall": 1.0,
+          "value_count": 18,
+          "median_seconds": 2.6374884500110056,
+          "failures": 0
+        }
+      },
+      "label": "PP-OCRv5",
+      "sampleCount": 62,
+      "requestSeconds": 8.329820900049526,
+      "sourceReceiptSha256": "533a76aa54fa8bacec908895bef11005c5feff122003152060b6d74442cfcd45",
+      "samples": [
+        {
+          "id": "synthetic-page-clean",
+          "sha256": "4b79721dea67b4c07a22bb60df891f39c6a9715049f692a52efae378db9d0cd7",
+          "cer": 0.0,
+          "exact": true,
+          "complete": true,
+          "error": null,
+          "seconds": 2.9167268000310287,
+          "value_matches": [
+            true,
+            true,
+            true,
+            true,
+            true,
+            true,
+            true,
+            true,
+            true
+          ]
+        },
+        {
+          "id": "synthetic-page-degraded",
+          "sha256": "748b84995199506a43cc66f17bdd47e9ef5efd6d5cef364c448bf031fd3737ee",
+          "cer": 0.0032679738562091504,
+          "exact": false,
+          "complete": true,
+          "error": null,
+          "seconds": 2.3582500999909826,
+          "value_matches": [
+            true,
+            true,
+            true,
+            true,
+            true,
+            true,
+            true,
+            true,
+            true
+          ]
+        },
+        {
+          "id": "census-000",
+          "sha256": "439f1736d0a66b97c793e7203d487162bfba9d8115c63865cde066882a2ec0ab",
+          "cer": 0.2857142857142857,
+          "exact": false,
+          "complete": true,
+          "error": null,
+          "seconds": 0.07840910000959411,
+          "value_matches": [
+            true,
+            false
+          ]
+        },
+        {
+          "id": "census-001",
+          "sha256": "d0dc38467bd43c46e75b252eee0b9d3b12a7f822c7890c2b7a3867e18fbf7cb5",
+          "cer": 0.5,
+          "exact": false,
+          "complete": true,
+          "error": null,
+          "seconds": 0.0567526999511756,
+          "value_matches": [
+            false
+          ]
+        },
+        {
+          "id": "census-002",
+          "sha256": "7b5ebcc849d56139d731a88012da3fd871be0166c43e9c1d36b4a1c3c554656a",
+          "cer": 0.5,
+          "exact": false,
+          "complete": true,
+          "error": null,
+          "seconds": 0.057737499999348074,
+          "value_matches": [
+            false
+          ]
+        },
+        {
+          "id": "census-003",
+          "sha256": "cdf94054a77bfc1760b68612846a9e1462a38d655b9d9b20fc769659a18916f4",
+          "cer": 0.2222222222222222,
+          "exact": false,
+          "complete": true,
+          "error": null,
+          "seconds": 0.06763190001947805,
+          "value_matches": [
+            false
+          ]
+        },
+        {
+          "id": "census-004",
+          "sha256": "6321dc0a2d5083165f6aee0517ef6a2773b685b0caf2c6e0bea6d6b4992c6ea8",
+          "cer": 0.13333333333333333,
+          "exact": false,
+          "complete": true,
+          "error": null,
+          "seconds": 0.05996059998869896,
+          "value_matches": [
+            true,
+            false
+          ]
+        },
+        {
+          "id": "census-005",
+          "sha256": "72c27963e50fa58a31c16829b0168191dd706f829ed3753717a80001c7f31124",
+          "cer": 0.3333333333333333,
+          "exact": false,
+          "complete": true,
+          "error": null,
+          "seconds": 0.0721116999629885,
+          "value_matches": [
+            false
+          ]
+        },
+        {
+          "id": "census-006",
+          "sha256": "e87aca55b54a37b1613f0d187bbc1f890d7e46b0312f05994d0fbe4c1c840e76",
+          "cer": 0.0,
+          "exact": false,
+          "complete": true,
+          "error": null,
+          "seconds": 0.07723780005471781,
+          "value_matches": [
+            true
+          ]
+        },
+        {
+          "id": "census-007",
+          "sha256": "06e009ddfbb098fe43e52c88ac68029d1469f6e17587b88f7f6f4f2318a6b90b",
+          "cer": 0.4,
+          "exact": false,
+          "complete": true,
+          "error": null,
+          "seconds": 0.07888950000051409,
+          "value_matches": [
+            false,
+            true,
+            false
+          ]
+        },
+        {
+          "id": "census-008",
+          "sha256": "a6182b40e4d62faef1f9fe9e99467df2a4001e44c772cc445a8746f9a8cf3c07",
+          "cer": 0.8,
+          "exact": false,
+          "complete": true,
+          "error": null,
+          "seconds": 0.09233730001142249,
+          "value_matches": [
+            false
+          ]
+        },
+        {
+          "id": "census-009",
+          "sha256": "75199f757cc0433a9a8246451f4db10bc38909f2896895ea63fdb18ce5b34bae",
+          "cer": 0.5454545454545454,
+          "exact": false,
+          "complete": true,
+          "error": null,
+          "seconds": 0.1120744000072591,
+          "value_matches": [
+            false,
+            false
+          ]
+        },
+        {
+          "id": "census-010",
+          "sha256": "445a857487f5b1db0a8a86b74ac2ea7ad944bce72a16384a80431eac91cacc3d",
+          "cer": 0.6666666666666666,
+          "exact": false,
+          "complete": true,
+          "error": null,
+          "seconds": 0.06287599995266646,
+          "value_matches": [
+            false,
+            false
+          ]
+        },
+        {
+          "id": "census-011",
+          "sha256": "c5658720c3b9785943d5c0c47f01c23b02029f5737f7f836e247d56019677137",
+          "cer": 0.5333333333333333,
+          "exact": false,
+          "complete": true,
+          "error": null,
+          "seconds": 0.05692649999400601,
+          "value_matches": [
+            false,
+            false
+          ]
+        },
+        {
+          "id": "census-012",
+          "sha256": "b731b3a39f25ed0ca0036d923a42aed446b9da9afd778cd564753ac96d761233",
+          "cer": 0.06666666666666667,
+          "exact": false,
+          "complete": true,
+          "error": null,
+          "seconds": 0.05547109997132793,
+          "value_matches": [
+            false,
+            true
+          ]
+        },
+        {
+          "id": "census-013",
+          "sha256": "4a76228d1223ad4e586b2f6699f0ec0c22d65174bf06dbb76275a187fc50dcec",
+          "cer": 0.46153846153846156,
+          "exact": false,
+          "complete": true,
+          "error": null,
+          "seconds": 0.062395700020715594,
+          "value_matches": [
+            false,
+            false
+          ]
+        },
+        {
+          "id": "census-014",
+          "sha256": "b8b0e6dbff064e2541b26d970d423490b37c73040a8341fa651bb5208ec4c683",
+          "cer": 0.07142857142857142,
+          "exact": false,
+          "complete": true,
+          "error": null,
+          "seconds": 0.053556300001218915,
+          "value_matches": [
+            true,
+            false
+          ]
+        },
+        {
+          "id": "census-015",
+          "sha256": "361f756a6f6bb2d292c274831da1e81fee012bf011e7270cefdfa124b0bda5a7",
+          "cer": 0.42857142857142855,
+          "exact": false,
+          "complete": true,
+          "error": null,
+          "seconds": 0.05658089998178184,
+          "value_matches": [
+            false,
+            false
+          ]
+        },
+        {
+          "id": "census-016",
+          "sha256": "658dff6e4d9b75b3e006956bb2b3818b2e413330e4c7b7d8a53ab94506a8e197",
+          "cer": 0.3,
+          "exact": false,
+          "complete": true,
+          "error": null,
+          "seconds": 0.06042959995102137,
+          "value_matches": [
+            true,
+            false
+          ]
+        },
+        {
+          "id": "census-017",
+          "sha256": "dc93e4a536da36bf47fe01732c70a2f98ce7722c180a0ddc63563f35865d6d97",
+          "cer": 0.21428571428571427,
+          "exact": false,
+          "complete": true,
+          "error": null,
+          "seconds": 0.058236700017005205,
+          "value_matches": [
+            true,
+            false
+          ]
+        },
+        {
+          "id": "census-018",
+          "sha256": "e6feb0fad66a06b0b06da5a19fad66d2a46092a99e7c52dd7f705ede8471d0fb",
+          "cer": 0.5,
+          "exact": false,
+          "complete": true,
+          "error": null,
+          "seconds": 0.062386800011154264,
+          "value_matches": [
+            false
+          ]
+        },
+        {
+          "id": "census-019",
+          "sha256": "00092787e26e0291f6e0946786a676689d86cdc7fccce53dd87fd9d06eb7358a",
+          "cer": 0.3333333333333333,
+          "exact": false,
+          "complete": true,
+          "error": null,
+          "seconds": 0.06111450004391372,
+          "value_matches": [
+            false
+          ]
+        },
+        {
+          "id": "iam-000",
+          "sha256": "1884d7c125ddb4f9c22f4ac22da98cff82cf571b2aa85d23d06521fcd35267ea",
+          "cer": 0.0,
+          "exact": true,
+          "complete": true,
+          "error": null,
+          "seconds": 0.0835495000355877,
+          "value_matches": []
+        },
+        {
+          "id": "iam-001",
+          "sha256": "57f1fb05ce5a5dc9571f603d833dacbabbe793b5dea75d04b406bb6aef9fa422",
+          "cer": 0.04878048780487805,
+          "exact": false,
+          "complete": true,
+          "error": null,
+          "seconds": 0.103233200032264,
+          "value_matches": []
+        },
+        {
+          "id": "iam-002",
+          "sha256": "aa84f7ffd69f89921b562001290c77308a14ec3df940beb28735e1e68cd017c5",
+          "cer": 1.0,
+          "exact": false,
+          "complete": false,
+          "error": null,
+          "seconds": 0.05022319999989122,
+          "value_matches": []
+        },
+        {
+          "id": "iam-003",
+          "sha256": "81bf15677e8d12897378f2cb96223ee06b5fe0c0c42ee55ef2336d6f80806ca7",
+          "cer": 0.057692307692307696,
+          "exact": false,
+          "complete": true,
+          "error": null,
+          "seconds": 0.07917679997626692,
+          "value_matches": []
+        },
+        {
+          "id": "iam-004",
+          "sha256": "339d3bdff3fb67278a9bd4e4eee20b3573b7c0e35d4f006a0f4b5cefaa960e57",
+          "cer": 0.11428571428571428,
+          "exact": false,
+          "complete": true,
+          "error": null,
+          "seconds": 0.07522350002545863,
+          "value_matches": []
+        },
+        {
+          "id": "iam-005",
+          "sha256": "85cf97c5dbecdf6db8420e5737cb1a92bfab3b6a1e12795a2077054054069c9f",
+          "cer": 0.5833333333333334,
+          "exact": false,
+          "complete": true,
+          "error": null,
+          "seconds": 0.04881100001512095,
+          "value_matches": []
+        },
+        {
+          "id": "iam-006",
+          "sha256": "7f740d2d11a3598b597b4876e73fe485e485cfc74141fd6eefd9c42989871ef8",
+          "cer": 0.17777777777777778,
+          "exact": false,
+          "complete": true,
+          "error": null,
+          "seconds": 0.05474339995998889,
+          "value_matches": []
+        },
+        {
+          "id": "iam-007",
+          "sha256": "fd62654075c2ba75aa76f24daed8496b5336c753b794976af4cd723ba6570abf",
+          "cer": 0.10526315789473684,
+          "exact": false,
+          "complete": true,
+          "error": null,
+          "seconds": 0.06940949999261647,
+          "value_matches": []
+        },
+        {
+          "id": "iam-008",
+          "sha256": "5a4e872c7f2abe34b03e973601b12d422f58bc3e9075a297b9b143dcdfbd9e7f",
+          "cer": 0.10204081632653061,
+          "exact": false,
+          "complete": true,
+          "error": null,
+          "seconds": 0.051449300022795796,
+          "value_matches": []
+        },
+        {
+          "id": "iam-009",
+          "sha256": "7fcd02dcd8115e01050321e214701c2bee6d26bff10c0decabcbda29167f4a51",
+          "cer": 0.5227272727272727,
+          "exact": false,
+          "complete": true,
+          "error": null,
+          "seconds": 0.05149790004361421,
+          "value_matches": []
+        },
+        {
+          "id": "iam-010",
+          "sha256": "b51d2474632c169446eef5b224d39c49d688f3ab5b3efb00751ed7480c8bbc23",
+          "cer": 0.02040816326530612,
+          "exact": false,
+          "complete": true,
+          "error": null,
+          "seconds": 0.09101470001041889,
+          "value_matches": []
+        },
+        {
+          "id": "iam-011",
+          "sha256": "38aaafb5f91d1c28aa6f4519140c59633c7e5d865a53dd0d1466825ba7ba8045",
+          "cer": 0.08,
+          "exact": false,
+          "complete": true,
+          "error": null,
+          "seconds": 0.06551149999722838,
+          "value_matches": []
+        },
+        {
+          "id": "iam-012",
+          "sha256": "b8ab5f9be8aeb7f8254b24b68a34aa1aacdcca85a69f59e871fc18c53c01860c",
+          "cer": 0.047619047619047616,
+          "exact": false,
+          "complete": true,
+          "error": null,
+          "seconds": 0.06134619994554669,
+          "value_matches": []
+        },
+        {
+          "id": "iam-013",
+          "sha256": "d02c6de80a4a35927110901448ea4a256a9dfa98c0e1e1906804fef596c92409",
+          "cer": 0.1111111111111111,
+          "exact": false,
+          "complete": true,
+          "error": null,
+          "seconds": 0.05549769999925047,
+          "value_matches": []
+        },
+        {
+          "id": "iam-014",
+          "sha256": "1a776b19ca95c1924b89c87c2e158a7baaf5b0ed332a3ce3ddb3a3e41f11a17f",
+          "cer": 0.29310344827586204,
+          "exact": false,
+          "complete": true,
+          "error": null,
+          "seconds": 0.07369530003052205,
+          "value_matches": []
+        },
+        {
+          "id": "iam-015",
+          "sha256": "930c3f7a19ed7335c354a24cd9348b004f6d447b536449872fd8233a22e35bd3",
+          "cer": 0.05128205128205128,
+          "exact": false,
+          "complete": true,
+          "error": null,
+          "seconds": 0.049505700008012354,
+          "value_matches": []
+        },
+        {
+          "id": "iam-016",
+          "sha256": "28a956938568e568326d62572f7b29957094719358ece49c9bfc48aa9936614c",
+          "cer": 0.23684210526315788,
+          "exact": false,
+          "complete": true,
+          "error": null,
+          "seconds": 0.057480799965560436,
+          "value_matches": []
+        },
+        {
+          "id": "iam-017",
+          "sha256": "7c210007e570a49676e7d687ac35218180ce6876eb2d45c1268ede2f31255bb0",
+          "cer": 0.10638297872340426,
+          "exact": false,
+          "complete": true,
+          "error": null,
+          "seconds": 0.045078700000885874,
+          "value_matches": []
+        },
+        {
+          "id": "iam-018",
+          "sha256": "b0ef2cbb284a25fea2f05ab0c4f0b123a64c76e215f655e7174a7f133ed5270b",
+          "cer": 0.38636363636363635,
+          "exact": false,
+          "complete": true,
+          "error": null,
+          "seconds": 0.03415949997724965,
+          "value_matches": []
+        },
+        {
+          "id": "iam-019",
+          "sha256": "6e03f06454a2108aec9b66fc96142954b3f43d8057b628f8ccd24851c461a254",
+          "cer": 0.027777777777777776,
+          "exact": false,
+          "complete": true,
+          "error": null,
+          "seconds": 0.05868740001460537,
+          "value_matches": []
+        },
+        {
+          "id": "synthetic-lines-000",
+          "sha256": "b3a27fc388443d2d6df15d53d065142adbf609149601f7b33eac6d3bb353d578",
+          "cer": 0.11764705882352941,
+          "exact": false,
+          "complete": true,
+          "error": null,
+          "seconds": 0.023115500051062554,
+          "value_matches": [
+            false
+          ]
+        },
+        {
+          "id": "synthetic-lines-001",
+          "sha256": "b5534bb363ed9a882b0a42cb6c580c3d42d86ffef4cb546c060321ecda43ab5e",
+          "cer": 0.0,
+          "exact": true,
+          "complete": true,
+          "error": null,
+          "seconds": 0.017943899962119758,
+          "value_matches": [
+            true
+          ]
+        },
+        {
+          "id": "synthetic-lines-002",
+          "sha256": "0789627c012df0902ae8b0efaf7a800f8c6cf6063ac4a18e8996e98c5ee1d472",
+          "cer": 0.17857142857142858,
+          "exact": false,
+          "complete": true,
+          "error": null,
+          "seconds": 0.02245530002983287,
+          "value_matches": [
+            false
+          ]
+        },
+        {
+          "id": "synthetic-lines-003",
+          "sha256": "58baabbe4bf687419db244b8a5d81b455caf2af14fa93007fc474d51fd231030",
+          "cer": 0.0,
+          "exact": true,
+          "complete": true,
+          "error": null,
+          "seconds": 0.022614200017414987,
+          "value_matches": [
+            true
+          ]
+        },
+        {
+          "id": "synthetic-lines-004",
+          "sha256": "7ef8756163feab72710704ca69d526e2a6f8a33ef2d3268a07d259746111972b",
+          "cer": 0.30434782608695654,
+          "exact": false,
+          "complete": true,
+          "error": null,
+          "seconds": 0.01881630002753809,
+          "value_matches": [
+            false
+          ]
+        },
+        {
+          "id": "synthetic-lines-005",
+          "sha256": "cdfd6118b3e5dbbf22c99afa69c8794f493f3c78184675de95d3d0c8d462861a",
+          "cer": 0.0,
+          "exact": true,
+          "complete": true,
+          "error": null,
+          "seconds": 0.029174999974202365,
+          "value_matches": [
+            true
+          ]
+        },
+        {
+          "id": "synthetic-lines-006",
+          "sha256": "62acad353bba1ef7c4d071280b56da18f7e9cbd377190c76d7e1ff596aa12687",
+          "cer": 0.0,
+          "exact": true,
+          "complete": true,
+          "error": null,
+          "seconds": 0.015690000029280782,
+          "value_matches": [
+            true
+          ]
+        },
+        {
+          "id": "synthetic-lines-007",
+          "sha256": "bc3f4957a0e3127e9b4bd33a6689a9f8788edae2fd8fca6127a63b54d0bd34a8",
+          "cer": 0.0,
+          "exact": true,
+          "complete": true,
+          "error": null,
+          "seconds": 0.027030699944589287,
+          "value_matches": [
+            true
+          ]
+        },
+        {
+          "id": "synthetic-lines-008",
+          "sha256": "7758585706e6dbfd6266cfade11adc812c6389564229d9b79a1744996bebafa0",
+          "cer": 0.11764705882352941,
+          "exact": false,
+          "complete": true,
+          "error": null,
+          "seconds": 0.016058200038969517,
+          "value_matches": [
+            false
+          ]
+        },
+        {
+          "id": "synthetic-lines-009",
+          "sha256": "b6b9abdd611b2cae61953c3fcab16cad4a5fd93999dda8e0e7dd93263c1cdef5",
+          "cer": 0.3333333333333333,
+          "exact": false,
+          "complete": true,
+          "error": null,
+          "seconds": 0.020795399963390082,
+          "value_matches": [
+            false
+          ]
+        },
+        {
+          "id": "synthetic-lines-010",
+          "sha256": "a88234ebe22e31a2659c1b5712e0c4b9199c1fe7922a959bc47407e84964b9a8",
+          "cer": 0.0,
+          "exact": true,
+          "complete": true,
+          "error": null,
+          "seconds": 0.028474599996116012,
+          "value_matches": [
+            true
+          ]
+        },
+        {
+          "id": "synthetic-lines-011",
+          "sha256": "79f9f4cd9b12485512fa3fb0eadf59c8b9fe55269c9ae57c10cc826acff920bf",
+          "cer": 0.0,
+          "exact": true,
+          "complete": true,
+          "error": null,
+          "seconds": 0.018960299959871918,
+          "value_matches": [
+            true
+          ]
+        },
+        {
+          "id": "synthetic-lines-012",
+          "sha256": "95995fa3de77bbfdee82583292ac6ece4bd903e9ff0e6b93e680883ce701ec4f",
+          "cer": 0.0,
+          "exact": true,
+          "complete": true,
+          "error": null,
+          "seconds": 0.02601239999057725,
+          "value_matches": [
+            true
+          ]
+        },
+        {
+          "id": "synthetic-lines-013",
+          "sha256": "dd7c2542deb896ea20aeb84070c593a147b5499d6ee99f5459818df4b9478756",
+          "cer": 0.16666666666666666,
+          "exact": false,
+          "complete": true,
+          "error": null,
+          "seconds": 0.019501400005538017,
+          "value_matches": [
+            false
+          ]
+        },
+        {
+          "id": "synthetic-lines-014",
+          "sha256": "fc69e8e985965d3911d95968d201bb158676380bf5618d113e22f9e9edf8b522",
+          "cer": 0.38461538461538464,
+          "exact": false,
+          "complete": true,
+          "error": null,
+          "seconds": 0.02031300001544878,
+          "value_matches": [
+            false
+          ]
+        },
+        {
+          "id": "synthetic-lines-015",
+          "sha256": "7bbfc1fcaead0624ddcb7effd41e32856be2c8871724e529850df34e1289bb00",
+          "cer": 0.0,
+          "exact": true,
+          "complete": true,
+          "error": null,
+          "seconds": 0.01982109999516979,
+          "value_matches": [
+            true
+          ]
+        },
+        {
+          "id": "synthetic-lines-016",
+          "sha256": "6b1986a43ce470341993aa4697931853a5e3347eade86cd91da051ed37657dd3",
+          "cer": 0.058823529411764705,
+          "exact": false,
+          "complete": true,
+          "error": null,
+          "seconds": 0.02325399999972433,
+          "value_matches": [
+            false
+          ]
+        },
+        {
+          "id": "synthetic-lines-017",
+          "sha256": "fe3ca70f58547e9d3a60969b4edb9a467621f8c4972f5cf00e00e8101605ecf3",
+          "cer": 0.0,
+          "exact": true,
+          "complete": true,
+          "error": null,
+          "seconds": 0.024135100014973432,
+          "value_matches": [
+            true
+          ]
+        },
+        {
+          "id": "synthetic-lines-018",
+          "sha256": "6ca56a5da6bc5ffd50137e0866e198f9d9fc05e2e81215bdb11ba2624aca8682",
+          "cer": 0.0,
+          "exact": true,
+          "complete": true,
+          "error": null,
+          "seconds": 0.03622930002165958,
+          "value_matches": [
+            true
+          ]
+        },
+        {
+          "id": "synthetic-lines-019",
+          "sha256": "4508cf06b6ee339902a28efaaacf3f11adf6af9025bd5fef975bc8e645ed7f1b",
+          "cer": 0.0,
+          "exact": true,
+          "complete": true,
+          "error": null,
+          "seconds": 0.022036899987142533,
+          "value_matches": [
+            true
+          ]
+        }
+      ]
+    },
+    "qwen4": {
+      "engine": "qwen4",
+      "date": "2026-10-31T17:35:31+0100",
+      "glm_max_side": null,
+      "qwen_context": 4096,
+      "unlimited_direct_cuda": null,
+      "unlimited_white_page": null,
+      "qualification": "Public line crops and fictitious scan fixtures; not production redaction qualification.",
+      "resources": {
+        "model": {
+          "path": "D:\\Proyectos\\herramientas\\anonimato\\models\\advanced-lite\\vlm.gguf",
+          "sha256": "66358cb18bb6b3b1b6675aa412c7a88ef01d228f481184d13668e5201c730a0a"
+        },
+        "projector": {
+          "path": "D:\\Proyectos\\herramientas\\anonimato\\models\\advanced-lite\\vlm-mmproj.gguf",
+          "sha256": "30ba2c7dd3127a4561b6cba9d13d0f711c91bdb38742e2f56d73c8cb596bd06d"
+        },
+        "runtime": {
+          "path": "D:\\Proyectos\\herramientas\\anonimato\\runtime\\llama\\llama-server.exe",
+          "sha256": "f7ccb964dc4b7a205e1f2d7ebdb3de4c2e111ca338d0c78f25e8d13ab75ff239"
+        }
+      },
+      "backend": "GPU (Vulkan0)",
+      "startup_seconds": 53.634030500019435,
+      "summary": {
+        "census": {
+          "samples": 20,
+          "mean_cer": 0.17924519924519924,
+          "exact": 0.0,
+          "literal_value_recall": 0.5757575757575758,
+          "value_count": 33,
+          "median_seconds": 0.6872057500004303,
+          "failures": 0
+        },
+        "iam": {
+          "samples": 20,
+          "mean_cer": 0.043937644551055706,
+          "exact": 0.15,
+          "literal_value_recall": null,
+          "value_count": 0,
+          "median_seconds": 0.6019938500248827,
+          "failures": 0
+        },
+        "synthetic-lines": {
+          "samples": 20,
+          "mean_cer": 0.0,
+          "exact": 1.0,
+          "literal_value_recall": 1.0,
+          "value_count": 20,
+          "median_seconds": 0.4258096999838017,
+          "failures": 0
+        }
+      },
+      "label": "Qwen3-VL 4B",
+      "sampleCount": 60,
+      "requestSeconds": 98.92588850005995,
+      "sourceReceiptSha256": "c8ec2c611051659005b32d67e3a9e5e44bd99bf92ceaea87c86145a86390435d",
+      "runtimeBuild": "b11166",
+      "samples": [
+        {
+          "id": "census-000",
+          "sha256": "439f1736d0a66b97c793e7203d487162bfba9d8115c63865cde066882a2ec0ab",
+          "cer": 0.0,
+          "exact": false,
+          "complete": true,
+          "error": null,
+          "seconds": 24.40943800000241,
+          "value_matches": [
+            true,
+            true
+          ]
+        },
+        {
+          "id": "census-001",
+          "sha256": "d0dc38467bd43c46e75b252eee0b9d3b12a7f822c7890c2b7a3867e18fbf7cb5",
+          "cer": 0.16666666666666666,
+          "exact": false,
+          "complete": true,
+          "error": null,
+          "seconds": 34.70150649995776,
+          "value_matches": [
+            false
+          ]
+        },
+        {
+          "id": "census-002",
+          "sha256": "7b5ebcc849d56139d731a88012da3fd871be0166c43e9c1d36b4a1c3c554656a",
+          "cer": 0.0,
+          "exact": false,
+          "complete": true,
+          "error": null,
+          "seconds": 0.7158468999550678,
+          "value_matches": [
+            true
+          ]
+        },
+        {
+          "id": "census-003",
+          "sha256": "cdf94054a77bfc1760b68612846a9e1462a38d655b9d9b20fc769659a18916f4",
+          "cer": 0.1111111111111111,
+          "exact": false,
+          "complete": true,
+          "error": null,
+          "seconds": 0.6109326000441797,
+          "value_matches": [
+            false
+          ]
+        },
+        {
+          "id": "census-004",
+          "sha256": "6321dc0a2d5083165f6aee0517ef6a2773b685b0caf2c6e0bea6d6b4992c6ea8",
+          "cer": 0.0,
+          "exact": false,
+          "complete": true,
+          "error": null,
+          "seconds": 0.6816439999965951,
+          "value_matches": [
+            true,
+            true
+          ]
+        },
+        {
+          "id": "census-005",
+          "sha256": "72c27963e50fa58a31c16829b0168191dd706f829ed3753717a80001c7f31124",
+          "cer": 1.0,
+          "exact": false,
+          "complete": true,
+          "error": null,
+          "seconds": 2.8317267000093125,
+          "value_matches": [
+            false
+          ]
+        },
+        {
+          "id": "census-006",
+          "sha256": "e87aca55b54a37b1613f0d187bbc1f890d7e46b0312f05994d0fbe4c1c840e76",
+          "cer": 0.0,
+          "exact": false,
+          "complete": true,
+          "error": null,
+          "seconds": 0.5787095999694429,
+          "value_matches": [
+            true
+          ]
+        },
+        {
+          "id": "census-007",
+          "sha256": "06e009ddfbb098fe43e52c88ac68029d1469f6e17587b88f7f6f4f2318a6b90b",
+          "cer": 0.2,
+          "exact": false,
+          "complete": true,
+          "error": null,
+          "seconds": 0.7526345999795012,
+          "value_matches": [
+            true,
+            true,
+            false
+          ]
+        },
+        {
+          "id": "census-008",
+          "sha256": "a6182b40e4d62faef1f9fe9e99467df2a4001e44c772cc445a8746f9a8cf3c07",
+          "cer": 0.0,
+          "exact": false,
+          "complete": true,
+          "error": null,
+          "seconds": 0.6595054999925196,
+          "value_matches": [
+            true
+          ]
+        },
+        {
+          "id": "census-009",
+          "sha256": "75199f757cc0433a9a8246451f4db10bc38909f2896895ea63fdb18ce5b34bae",
+          "cer": 0.7272727272727273,
+          "exact": false,
+          "complete": true,
+          "error": null,
+          "seconds": 1.8541014000074938,
+          "value_matches": [
+            false,
+            false
+          ]
+        },
+        {
+          "id": "census-010",
+          "sha256": "445a857487f5b1db0a8a86b74ac2ea7ad944bce72a16384a80431eac91cacc3d",
+          "cer": 0.0,
+          "exact": false,
+          "complete": true,
+          "error": null,
+          "seconds": 0.6656647999770939,
+          "value_matches": [
+            true,
+            true
+          ]
+        },
+        {
+          "id": "census-011",
+          "sha256": "c5658720c3b9785943d5c0c47f01c23b02029f5737f7f836e247d56019677137",
+          "cer": 0.0,
+          "exact": false,
+          "complete": true,
+          "error": null,
+          "seconds": 0.6016850000014529,
+          "value_matches": [
+            true,
+            true
+          ]
+        },
+        {
+          "id": "census-012",
+          "sha256": "b731b3a39f25ed0ca0036d923a42aed446b9da9afd778cd564753ac96d761233",
+          "cer": 0.06666666666666667,
+          "exact": false,
+          "complete": true,
+          "error": null,
+          "seconds": 0.561304300033953,
+          "value_matches": [
+            false,
+            true
+          ]
+        },
+        {
+          "id": "census-013",
+          "sha256": "4a76228d1223ad4e586b2f6699f0ec0c22d65174bf06dbb76275a187fc50dcec",
+          "cer": 0.38461538461538464,
+          "exact": false,
+          "complete": true,
+          "error": null,
+          "seconds": 0.7796210999949835,
+          "value_matches": [
+            false,
+            false
+          ]
+        },
+        {
+          "id": "census-014",
+          "sha256": "b8b0e6dbff064e2541b26d970d423490b37c73040a8341fa651bb5208ec4c683",
+          "cer": 0.0,
+          "exact": false,
+          "complete": true,
+          "error": null,
+          "seconds": 0.6467617999878712,
+          "value_matches": [
+            true,
+            true
+          ]
+        },
+        {
+          "id": "census-015",
+          "sha256": "361f756a6f6bb2d292c274831da1e81fee012bf011e7270cefdfa124b0bda5a7",
+          "cer": 0.35714285714285715,
+          "exact": false,
+          "complete": true,
+          "error": null,
+          "seconds": 0.6713666000287049,
+          "value_matches": [
+            false,
+            false
+          ]
+        },
+        {
+          "id": "census-016",
+          "sha256": "658dff6e4d9b75b3e006956bb2b3818b2e413330e4c7b7d8a53ab94506a8e197",
+          "cer": 0.5,
+          "exact": false,
+          "complete": true,
+          "error": null,
+          "seconds": 2.815525100042578,
+          "value_matches": [
+            false,
+            false
+          ]
+        },
+        {
+          "id": "census-017",
+          "sha256": "dc93e4a536da36bf47fe01732c70a2f98ce7722c180a0ddc63563f35865d6d97",
+          "cer": 0.07142857142857142,
+          "exact": false,
+          "complete": true,
+          "error": null,
+          "seconds": 0.7357052000006661,
+          "value_matches": [
+            true,
+            false
+          ]
+        },
+        {
+          "id": "census-018",
+          "sha256": "e6feb0fad66a06b0b06da5a19fad66d2a46092a99e7c52dd7f705ede8471d0fb",
+          "cer": 0.0,
+          "exact": false,
+          "complete": true,
+          "error": null,
+          "seconds": 0.6694652999867685,
+          "value_matches": [
+            true
+          ]
+        },
+        {
+          "id": "census-019",
+          "sha256": "00092787e26e0291f6e0946786a676689d86cdc7fccce53dd87fd9d06eb7358a",
+          "cer": 0.0,
+          "exact": false,
+          "complete": true,
+          "error": null,
+          "seconds": 0.6927675000042655,
+          "value_matches": [
+            true
+          ]
+        },
+        {
+          "id": "iam-000",
+          "sha256": "1884d7c125ddb4f9c22f4ac22da98cff82cf571b2aa85d23d06521fcd35267ea",
+          "cer": 0.0,
+          "exact": true,
+          "complete": true,
+          "error": null,
+          "seconds": 0.5535038000089116,
+          "value_matches": []
+        },
+        {
+          "id": "iam-001",
+          "sha256": "57f1fb05ce5a5dc9571f603d833dacbabbe793b5dea75d04b406bb6aef9fa422",
+          "cer": 0.024390243902439025,
+          "exact": false,
+          "complete": true,
+          "error": null,
+          "seconds": 0.563362099986989,
+          "value_matches": []
+        },
+        {
+          "id": "iam-002",
+          "sha256": "aa84f7ffd69f89921b562001290c77308a14ec3df940beb28735e1e68cd017c5",
+          "cer": 0.03571428571428571,
+          "exact": false,
+          "complete": true,
+          "error": null,
+          "seconds": 0.790440899960231,
+          "value_matches": []
+        },
+        {
+          "id": "iam-003",
+          "sha256": "81bf15677e8d12897378f2cb96223ee06b5fe0c0c42ee55ef2336d6f80806ca7",
+          "cer": 0.038461538461538464,
+          "exact": false,
+          "complete": true,
+          "error": null,
+          "seconds": 0.6078236000030302,
+          "value_matches": []
+        },
+        {
+          "id": "iam-004",
+          "sha256": "339d3bdff3fb67278a9bd4e4eee20b3573b7c0e35d4f006a0f4b5cefaa960e57",
+          "cer": 0.02857142857142857,
+          "exact": false,
+          "complete": true,
+          "error": null,
+          "seconds": 0.520660099980887,
+          "value_matches": []
+        },
+        {
+          "id": "iam-005",
+          "sha256": "85cf97c5dbecdf6db8420e5737cb1a92bfab3b6a1e12795a2077054054069c9f",
+          "cer": 0.016666666666666666,
+          "exact": false,
+          "complete": true,
+          "error": null,
+          "seconds": 0.7437837999896146,
+          "value_matches": []
+        },
+        {
+          "id": "iam-006",
+          "sha256": "7f740d2d11a3598b597b4876e73fe485e485cfc74141fd6eefd9c42989871ef8",
+          "cer": 0.022222222222222223,
+          "exact": false,
+          "complete": true,
+          "error": null,
+          "seconds": 0.5985725999926217,
+          "value_matches": []
+        },
+        {
+          "id": "iam-007",
+          "sha256": "fd62654075c2ba75aa76f24daed8496b5336c753b794976af4cd723ba6570abf",
+          "cer": 0.05263157894736842,
+          "exact": false,
+          "complete": true,
+          "error": null,
+          "seconds": 0.5263448000187054,
+          "value_matches": []
+        },
+        {
+          "id": "iam-008",
+          "sha256": "5a4e872c7f2abe34b03e973601b12d422f58bc3e9075a297b9b143dcdfbd9e7f",
+          "cer": 0.02040816326530612,
+          "exact": false,
+          "complete": true,
+          "error": null,
+          "seconds": 0.6160830000299029,
+          "value_matches": []
+        },
+        {
+          "id": "iam-009",
+          "sha256": "7fcd02dcd8115e01050321e214701c2bee6d26bff10c0decabcbda29167f4a51",
+          "cer": 0.045454545454545456,
+          "exact": false,
+          "complete": true,
+          "error": null,
+          "seconds": 0.6600642999983393,
+          "value_matches": []
+        },
+        {
+          "id": "iam-010",
+          "sha256": "b51d2474632c169446eef5b224d39c49d688f3ab5b3efb00751ed7480c8bbc23",
+          "cer": 0.02040816326530612,
+          "exact": false,
+          "complete": true,
+          "error": null,
+          "seconds": 0.5979409000137821,
+          "value_matches": []
+        },
+        {
+          "id": "iam-011",
+          "sha256": "38aaafb5f91d1c28aa6f4519140c59633c7e5d865a53dd0d1466825ba7ba8045",
+          "cer": 0.02,
+          "exact": false,
+          "complete": true,
+          "error": null,
+          "seconds": 0.5887615000247024,
+          "value_matches": []
+        },
+        {
+          "id": "iam-012",
+          "sha256": "b8ab5f9be8aeb7f8254b24b68a34aa1aacdcca85a69f59e871fc18c53c01860c",
+          "cer": 0.047619047619047616,
+          "exact": false,
+          "complete": true,
+          "error": null,
+          "seconds": 0.6003275000257418,
+          "value_matches": []
+        },
+        {
+          "id": "iam-013",
+          "sha256": "d02c6de80a4a35927110901448ea4a256a9dfa98c0e1e1906804fef596c92409",
+          "cer": 0.044444444444444446,
+          "exact": false,
+          "complete": true,
+          "error": null,
+          "seconds": 0.6428599000209942,
+          "value_matches": []
+        },
+        {
+          "id": "iam-014",
+          "sha256": "1a776b19ca95c1924b89c87c2e158a7baaf5b0ed332a3ce3ddb3a3e41f11a17f",
+          "cer": 0.15517241379310345,
+          "exact": false,
+          "complete": true,
+          "error": null,
+          "seconds": 0.7933719999855384,
+          "value_matches": []
+        },
+        {
+          "id": "iam-015",
+          "sha256": "930c3f7a19ed7335c354a24cd9348b004f6d447b536449872fd8233a22e35bd3",
+          "cer": 0.07692307692307693,
+          "exact": false,
+          "complete": true,
+          "error": null,
+          "seconds": 0.6341278999461792,
+          "value_matches": []
+        },
+        {
+          "id": "iam-016",
+          "sha256": "28a956938568e568326d62572f7b29957094719358ece49c9bfc48aa9936614c",
+          "cer": 0.18421052631578946,
+          "exact": false,
+          "complete": true,
+          "error": null,
+          "seconds": 0.7011185000301339,
+          "value_matches": []
+        },
+        {
+          "id": "iam-017",
+          "sha256": "7c210007e570a49676e7d687ac35218180ce6876eb2d45c1268ede2f31255bb0",
+          "cer": 0.0,
+          "exact": true,
+          "complete": true,
+          "error": null,
+          "seconds": 0.6036602000240237,
+          "value_matches": []
+        },
+        {
+          "id": "iam-018",
+          "sha256": "b0ef2cbb284a25fea2f05ab0c4f0b123a64c76e215f655e7174a7f133ed5270b",
+          "cer": 0.045454545454545456,
+          "exact": false,
+          "complete": true,
+          "error": null,
+          "seconds": 0.5732108000083826,
+          "value_matches": []
+        },
+        {
+          "id": "iam-019",
+          "sha256": "6e03f06454a2108aec9b66fc96142954b3f43d8057b628f8ccd24851c461a254",
+          "cer": 0.0,
+          "exact": true,
+          "complete": true,
+          "error": null,
+          "seconds": 0.5559604000300169,
+          "value_matches": []
+        },
+        {
+          "id": "synthetic-lines-000",
+          "sha256": "b3a27fc388443d2d6df15d53d065142adbf609149601f7b33eac6d3bb353d578",
+          "cer": 0.0,
+          "exact": true,
+          "complete": true,
+          "error": null,
+          "seconds": 1.5490267999703065,
+          "value_matches": [
+            true
+          ]
+        },
+        {
+          "id": "synthetic-lines-001",
+          "sha256": "b5534bb363ed9a882b0a42cb6c580c3d42d86ffef4cb546c060321ecda43ab5e",
+          "cer": 0.0,
+          "exact": true,
+          "complete": true,
+          "error": null,
+          "seconds": 0.39702430000761524,
+          "value_matches": [
+            true
+          ]
+        },
+        {
+          "id": "synthetic-lines-002",
+          "sha256": "0789627c012df0902ae8b0efaf7a800f8c6cf6063ac4a18e8996e98c5ee1d472",
+          "cer": 0.0,
+          "exact": true,
+          "complete": true,
+          "error": null,
+          "seconds": 0.45144770003389567,
+          "value_matches": [
+            true
+          ]
+        },
+        {
+          "id": "synthetic-lines-003",
+          "sha256": "58baabbe4bf687419db244b8a5d81b455caf2af14fa93007fc474d51fd231030",
+          "cer": 0.0,
+          "exact": true,
+          "complete": true,
+          "error": null,
+          "seconds": 0.4594387999968603,
+          "value_matches": [
+            true
+          ]
+        },
+        {
+          "id": "synthetic-lines-004",
+          "sha256": "7ef8756163feab72710704ca69d526e2a6f8a33ef2d3268a07d259746111972b",
+          "cer": 0.0,
+          "exact": true,
+          "complete": true,
+          "error": null,
+          "seconds": 0.41157479997491464,
+          "value_matches": [
+            true
+          ]
+        },
+        {
+          "id": "synthetic-lines-005",
+          "sha256": "cdfd6118b3e5dbbf22c99afa69c8794f493f3c78184675de95d3d0c8d462861a",
+          "cer": 0.0,
+          "exact": true,
+          "complete": true,
+          "error": null,
+          "seconds": 0.4985619999933988,
+          "value_matches": [
+            true
+          ]
+        },
+        {
+          "id": "synthetic-lines-006",
+          "sha256": "62acad353bba1ef7c4d071280b56da18f7e9cbd377190c76d7e1ff596aa12687",
+          "cer": 0.0,
+          "exact": true,
+          "complete": true,
+          "error": null,
+          "seconds": 0.4112741000135429,
+          "value_matches": [
+            true
+          ]
+        },
+        {
+          "id": "synthetic-lines-007",
+          "sha256": "bc3f4957a0e3127e9b4bd33a6689a9f8788edae2fd8fca6127a63b54d0bd34a8",
+          "cer": 0.0,
+          "exact": true,
+          "complete": true,
+          "error": null,
+          "seconds": 0.45740610000211746,
+          "value_matches": [
+            true
+          ]
+        },
+        {
+          "id": "synthetic-lines-008",
+          "sha256": "7758585706e6dbfd6266cfade11adc812c6389564229d9b79a1744996bebafa0",
+          "cer": 0.0,
+          "exact": true,
+          "complete": true,
+          "error": null,
+          "seconds": 0.43536419997690246,
+          "value_matches": [
+            true
+          ]
+        },
+        {
+          "id": "synthetic-lines-009",
+          "sha256": "b6b9abdd611b2cae61953c3fcab16cad4a5fd93999dda8e0e7dd93263c1cdef5",
+          "cer": 0.0,
+          "exact": true,
+          "complete": true,
+          "error": null,
+          "seconds": 0.3560340999974869,
+          "value_matches": [
+            true
+          ]
+        },
+        {
+          "id": "synthetic-lines-010",
+          "sha256": "a88234ebe22e31a2659c1b5712e0c4b9199c1fe7922a959bc47407e84964b9a8",
+          "cer": 0.0,
+          "exact": true,
+          "complete": true,
+          "error": null,
+          "seconds": 0.7341462000040337,
+          "value_matches": [
+            true
+          ]
+        },
+        {
+          "id": "synthetic-lines-011",
+          "sha256": "79f9f4cd9b12485512fa3fb0eadf59c8b9fe55269c9ae57c10cc826acff920bf",
+          "cer": 0.0,
+          "exact": true,
+          "complete": true,
+          "error": null,
+          "seconds": 0.39097369997762144,
+          "value_matches": [
+            true
+          ]
+        },
+        {
+          "id": "synthetic-lines-012",
+          "sha256": "95995fa3de77bbfdee82583292ac6ece4bd903e9ff0e6b93e680883ce701ec4f",
+          "cer": 0.0,
+          "exact": true,
+          "complete": true,
+          "error": null,
+          "seconds": 0.49896759999683127,
+          "value_matches": [
+            true
+          ]
+        },
+        {
+          "id": "synthetic-lines-013",
+          "sha256": "dd7c2542deb896ea20aeb84070c593a147b5499d6ee99f5459818df4b9478756",
+          "cer": 0.0,
+          "exact": true,
+          "complete": true,
+          "error": null,
+          "seconds": 0.3677902999916114,
+          "value_matches": [
+            true
+          ]
+        },
+        {
+          "id": "synthetic-lines-014",
+          "sha256": "fc69e8e985965d3911d95968d201bb158676380bf5618d113e22f9e9edf8b522",
+          "cer": 0.0,
+          "exact": true,
+          "complete": true,
+          "error": null,
+          "seconds": 0.3796353000216186,
+          "value_matches": [
+            true
+          ]
+        },
+        {
+          "id": "synthetic-lines-015",
+          "sha256": "7bbfc1fcaead0624ddcb7effd41e32856be2c8871724e529850df34e1289bb00",
+          "cer": 0.0,
+          "exact": true,
+          "complete": true,
+          "error": null,
+          "seconds": 0.3958110000239685,
+          "value_matches": [
+            true
+          ]
+        },
+        {
+          "id": "synthetic-lines-016",
+          "sha256": "6b1986a43ce470341993aa4697931853a5e3347eade86cd91da051ed37657dd3",
+          "cer": 0.0,
+          "exact": true,
+          "complete": true,
+          "error": null,
+          "seconds": 0.28571530000772327,
+          "value_matches": [
+            true
+          ]
+        },
+        {
+          "id": "synthetic-lines-017",
+          "sha256": "fe3ca70f58547e9d3a60969b4edb9a467621f8c4972f5cf00e00e8101605ecf3",
+          "cer": 0.0,
+          "exact": true,
+          "complete": true,
+          "error": null,
+          "seconds": 0.41625519999070093,
+          "value_matches": [
+            true
+          ]
+        },
+        {
+          "id": "synthetic-lines-018",
+          "sha256": "6ca56a5da6bc5ffd50137e0866e198f9d9fc05e2e81215bdb11ba2624aca8682",
+          "cer": 0.0,
+          "exact": true,
+          "complete": true,
+          "error": null,
+          "seconds": 0.45839929999783635,
+          "value_matches": [
+            true
+          ]
+        },
+        {
+          "id": "synthetic-lines-019",
+          "sha256": "4508cf06b6ee339902a28efaaacf3f11adf6af9025bd5fef975bc8e645ed7f1b",
+          "cer": 0.0,
+          "exact": true,
+          "complete": true,
+          "error": null,
+          "seconds": 0.4631506000296213,
+          "value_matches": [
+            true
+          ]
+        }
+      ]
+    },
+    "qwen8": {
+      "engine": "qwen8",
+      "date": "2026-10-31T17:38:56+0100",
+      "glm_max_side": null,
+      "qwen_context": 4096,
+      "unlimited_direct_cuda": null,
+      "unlimited_white_page": null,
+      "qualification": "Public line crops and fictitious scan fixtures; not production redaction qualification.",
+      "resources": {
+        "model": {
+          "path": "D:\\Proyectos\\herramientas\\anonimato\\models\\advanced\\vlm.gguf",
+          "sha256": "67d1659bfe71b89d50b45a4ad1a9e5b997e5bb16ce5da66a6a6167abd569e9e2"
+        },
+        "projector": {
+          "path": "D:\\Proyectos\\herramientas\\anonimato\\models\\advanced\\vlm-mmproj.gguf",
+          "sha256": "c6ba85508d82f42590e6eb77d5340369ab6fecf107a7561d809523d8aa5f3bfd"
+        },
+        "runtime": {
+          "path": "D:\\Proyectos\\herramientas\\anonimato\\runtime\\llama\\llama-server.exe",
+          "sha256": "f7ccb964dc4b7a205e1f2d7ebdb3de4c2e111ca338d0c78f25e8d13ab75ff239"
+        }
+      },
+      "backend": "GPU (Vulkan0)",
+      "startup_seconds": 87.3735394999967,
+      "summary": {
+        "census": {
+          "samples": 20,
+          "mean_cer": 0.08841325341325341,
+          "exact": 0.0,
+          "literal_value_recall": 0.6666666666666666,
+          "value_count": 33,
+          "median_seconds": 1.1775495000183582,
+          "failures": 0
+        },
+        "iam": {
+          "samples": 20,
+          "mean_cer": 0.04199210445896389,
+          "exact": 0.15,
+          "literal_value_recall": null,
+          "value_count": 0,
+          "median_seconds": 0.8705675500095822,
+          "failures": 0
+        },
+        "synthetic-lines": {
+          "samples": 20,
+          "mean_cer": 0.005555555555555555,
+          "exact": 0.95,
+          "literal_value_recall": 1.0,
+          "value_count": 20,
+          "median_seconds": 0.7318450500024483,
+          "failures": 0
+        }
+      },
+      "label": "Qwen3-VL 8B",
+      "sampleCount": 60,
+      "requestSeconds": 74.1555345999077,
+      "sourceReceiptSha256": "5780e661912ad0ae26658a2a4378f9a3210b5e7b7fdf9cb02a025642f683423e",
+      "runtimeBuild": "b11166",
+      "samples": [
+        {
+          "id": "census-000",
+          "sha256": "439f1736d0a66b97c793e7203d487162bfba9d8115c63865cde066882a2ec0ab",
+          "cer": 0.0,
+          "exact": false,
+          "complete": true,
+          "error": null,
+          "seconds": 7.176664899976458,
+          "value_matches": [
+            true,
+            true
+          ]
+        },
+        {
+          "id": "census-001",
+          "sha256": "d0dc38467bd43c46e75b252eee0b9d3b12a7f822c7890c2b7a3867e18fbf7cb5",
+          "cer": 0.16666666666666666,
+          "exact": false,
+          "complete": true,
+          "error": null,
+          "seconds": 9.3387808999978,
+          "value_matches": [
+            false
+          ]
+        },
+        {
+          "id": "census-002",
+          "sha256": "7b5ebcc849d56139d731a88012da3fd871be0166c43e9c1d36b4a1c3c554656a",
+          "cer": 0.0,
+          "exact": false,
+          "complete": true,
+          "error": null,
+          "seconds": 0.9390535999555141,
+          "value_matches": [
+            true
+          ]
+        },
+        {
+          "id": "census-003",
+          "sha256": "cdf94054a77bfc1760b68612846a9e1462a38d655b9d9b20fc769659a18916f4",
+          "cer": 0.1111111111111111,
+          "exact": false,
+          "complete": true,
+          "error": null,
+          "seconds": 1.3612678000354208,
+          "value_matches": [
+            false
+          ]
+        },
+        {
+          "id": "census-004",
+          "sha256": "6321dc0a2d5083165f6aee0517ef6a2773b685b0caf2c6e0bea6d6b4992c6ea8",
+          "cer": 0.0,
+          "exact": false,
+          "complete": true,
+          "error": null,
+          "seconds": 0.9902891999809071,
+          "value_matches": [
+            true,
+            true
+          ]
+        },
+        {
+          "id": "census-005",
+          "sha256": "72c27963e50fa58a31c16829b0168191dd706f829ed3753717a80001c7f31124",
+          "cer": 0.2222222222222222,
+          "exact": false,
+          "complete": true,
+          "error": null,
+          "seconds": 0.9094873999711126,
+          "value_matches": [
+            false
+          ]
+        },
+        {
+          "id": "census-006",
+          "sha256": "e87aca55b54a37b1613f0d187bbc1f890d7e46b0312f05994d0fbe4c1c840e76",
+          "cer": 0.0,
+          "exact": false,
+          "complete": true,
+          "error": null,
+          "seconds": 1.1570138999959454,
+          "value_matches": [
+            true
+          ]
+        },
+        {
+          "id": "census-007",
+          "sha256": "06e009ddfbb098fe43e52c88ac68029d1469f6e17587b88f7f6f4f2318a6b90b",
+          "cer": 0.2,
+          "exact": false,
+          "complete": true,
+          "error": null,
+          "seconds": 1.0887003000243567,
+          "value_matches": [
+            true,
+            true,
+            false
+          ]
+        },
+        {
+          "id": "census-008",
+          "sha256": "a6182b40e4d62faef1f9fe9e99467df2a4001e44c772cc445a8746f9a8cf3c07",
+          "cer": 0.0,
+          "exact": false,
+          "complete": true,
+          "error": null,
+          "seconds": 0.9508950000163168,
+          "value_matches": [
+            true
+          ]
+        },
+        {
+          "id": "census-009",
+          "sha256": "75199f757cc0433a9a8246451f4db10bc38909f2896895ea63fdb18ce5b34bae",
+          "cer": 0.18181818181818182,
+          "exact": false,
+          "complete": true,
+          "error": null,
+          "seconds": 1.094019300013315,
+          "value_matches": [
+            false,
+            true
+          ]
+        },
+        {
+          "id": "census-010",
+          "sha256": "445a857487f5b1db0a8a86b74ac2ea7ad944bce72a16384a80431eac91cacc3d",
+          "cer": 0.0,
+          "exact": false,
+          "complete": true,
+          "error": null,
+          "seconds": 1.315414700016845,
+          "value_matches": [
+            true,
+            true
+          ]
+        },
+        {
+          "id": "census-011",
+          "sha256": "c5658720c3b9785943d5c0c47f01c23b02029f5737f7f836e247d56019677137",
+          "cer": 0.0,
+          "exact": false,
+          "complete": true,
+          "error": null,
+          "seconds": 1.0856978999800049,
+          "value_matches": [
+            true,
+            true
+          ]
+        },
+        {
+          "id": "census-012",
+          "sha256": "b731b3a39f25ed0ca0036d923a42aed446b9da9afd778cd564753ac96d761233",
+          "cer": 0.0,
+          "exact": false,
+          "complete": true,
+          "error": null,
+          "seconds": 0.8477073000394739,
+          "value_matches": [
+            true,
+            true
+          ]
+        },
+        {
+          "id": "census-013",
+          "sha256": "4a76228d1223ad4e586b2f6699f0ec0c22d65174bf06dbb76275a187fc50dcec",
+          "cer": 0.07692307692307693,
+          "exact": false,
+          "complete": true,
+          "error": null,
+          "seconds": 1.1346041000215337,
+          "value_matches": [
+            false,
+            true
+          ]
+        },
+        {
+          "id": "census-014",
+          "sha256": "b8b0e6dbff064e2541b26d970d423490b37c73040a8341fa651bb5208ec4c683",
+          "cer": 0.0,
+          "exact": false,
+          "complete": true,
+          "error": null,
+          "seconds": 1.2184301000088453,
+          "value_matches": [
+            true,
+            true
+          ]
+        },
+        {
+          "id": "census-015",
+          "sha256": "361f756a6f6bb2d292c274831da1e81fee012bf011e7270cefdfa124b0bda5a7",
+          "cer": 0.07142857142857142,
+          "exact": false,
+          "complete": true,
+          "error": null,
+          "seconds": 1.229858000006061,
+          "value_matches": [
+            false,
+            true
+          ]
+        },
+        {
+          "id": "census-016",
+          "sha256": "658dff6e4d9b75b3e006956bb2b3818b2e413330e4c7b7d8a53ab94506a8e197",
+          "cer": 0.5,
+          "exact": false,
+          "complete": true,
+          "error": null,
+          "seconds": 5.511336700001266,
+          "value_matches": [
+            false,
+            false
+          ]
+        },
+        {
+          "id": "census-017",
+          "sha256": "dc93e4a536da36bf47fe01732c70a2f98ce7722c180a0ddc63563f35865d6d97",
+          "cer": 0.07142857142857142,
+          "exact": false,
+          "complete": true,
+          "error": null,
+          "seconds": 1.3603942000190727,
+          "value_matches": [
+            true,
+            false
+          ]
+        },
+        {
+          "id": "census-018",
+          "sha256": "e6feb0fad66a06b0b06da5a19fad66d2a46092a99e7c52dd7f705ede8471d0fb",
+          "cer": 0.16666666666666666,
+          "exact": false,
+          "complete": true,
+          "error": null,
+          "seconds": 1.2446667999611236,
+          "value_matches": [
+            false
+          ]
+        },
+        {
+          "id": "census-019",
+          "sha256": "00092787e26e0291f6e0946786a676689d86cdc7fccce53dd87fd9d06eb7358a",
+          "cer": 0.0,
+          "exact": false,
+          "complete": true,
+          "error": null,
+          "seconds": 1.198085100040771,
+          "value_matches": [
+            true
+          ]
+        },
+        {
+          "id": "iam-000",
+          "sha256": "1884d7c125ddb4f9c22f4ac22da98cff82cf571b2aa85d23d06521fcd35267ea",
+          "cer": 0.0,
+          "exact": true,
+          "complete": true,
+          "error": null,
+          "seconds": 0.770631899998989,
+          "value_matches": []
+        },
+        {
+          "id": "iam-001",
+          "sha256": "57f1fb05ce5a5dc9571f603d833dacbabbe793b5dea75d04b406bb6aef9fa422",
+          "cer": 0.024390243902439025,
+          "exact": false,
+          "complete": true,
+          "error": null,
+          "seconds": 0.7611512999865226,
+          "value_matches": []
+        },
+        {
+          "id": "iam-002",
+          "sha256": "aa84f7ffd69f89921b562001290c77308a14ec3df940beb28735e1e68cd017c5",
+          "cer": 0.05357142857142857,
+          "exact": false,
+          "complete": true,
+          "error": null,
+          "seconds": 1.160398299980443,
+          "value_matches": []
+        },
+        {
+          "id": "iam-003",
+          "sha256": "81bf15677e8d12897378f2cb96223ee06b5fe0c0c42ee55ef2336d6f80806ca7",
+          "cer": 0.038461538461538464,
+          "exact": false,
+          "complete": true,
+          "error": null,
+          "seconds": 0.8607670000055805,
+          "value_matches": []
+        },
+        {
+          "id": "iam-004",
+          "sha256": "339d3bdff3fb67278a9bd4e4eee20b3573b7c0e35d4f006a0f4b5cefaa960e57",
+          "cer": 0.02857142857142857,
+          "exact": false,
+          "complete": true,
+          "error": null,
+          "seconds": 0.7284669000073336,
+          "value_matches": []
+        },
+        {
+          "id": "iam-005",
+          "sha256": "85cf97c5dbecdf6db8420e5737cb1a92bfab3b6a1e12795a2077054054069c9f",
+          "cer": 0.016666666666666666,
+          "exact": false,
+          "complete": true,
+          "error": null,
+          "seconds": 0.9799875000026077,
+          "value_matches": []
+        },
+        {
+          "id": "iam-006",
+          "sha256": "7f740d2d11a3598b597b4876e73fe485e485cfc74141fd6eefd9c42989871ef8",
+          "cer": 0.022222222222222223,
+          "exact": false,
+          "complete": true,
+          "error": null,
+          "seconds": 0.8652294999919832,
+          "value_matches": []
+        },
+        {
+          "id": "iam-007",
+          "sha256": "fd62654075c2ba75aa76f24daed8496b5336c753b794976af4cd723ba6570abf",
+          "cer": 0.05263157894736842,
+          "exact": false,
+          "complete": true,
+          "error": null,
+          "seconds": 0.715529500041157,
+          "value_matches": []
+        },
+        {
+          "id": "iam-008",
+          "sha256": "5a4e872c7f2abe34b03e973601b12d422f58bc3e9075a297b9b143dcdfbd9e7f",
+          "cer": 0.02040816326530612,
+          "exact": false,
+          "complete": true,
+          "error": null,
+          "seconds": 0.8807333000004292,
+          "value_matches": []
+        },
+        {
+          "id": "iam-009",
+          "sha256": "7fcd02dcd8115e01050321e214701c2bee6d26bff10c0decabcbda29167f4a51",
+          "cer": 0.022727272727272728,
+          "exact": false,
+          "complete": true,
+          "error": null,
+          "seconds": 0.9086193999974057,
+          "value_matches": []
+        },
+        {
+          "id": "iam-010",
+          "sha256": "b51d2474632c169446eef5b224d39c49d688f3ab5b3efb00751ed7480c8bbc23",
+          "cer": 0.02040816326530612,
+          "exact": false,
+          "complete": true,
+          "error": null,
+          "seconds": 0.8138528999988921,
+          "value_matches": []
+        },
+        {
+          "id": "iam-011",
+          "sha256": "38aaafb5f91d1c28aa6f4519140c59633c7e5d865a53dd0d1466825ba7ba8045",
+          "cer": 0.02,
+          "exact": false,
+          "complete": true,
+          "error": null,
+          "seconds": 0.8603052000398748,
+          "value_matches": []
+        },
+        {
+          "id": "iam-012",
+          "sha256": "b8ab5f9be8aeb7f8254b24b68a34aa1aacdcca85a69f59e871fc18c53c01860c",
+          "cer": 0.047619047619047616,
+          "exact": false,
+          "complete": true,
+          "error": null,
+          "seconds": 0.9431564999977127,
+          "value_matches": []
+        },
+        {
+          "id": "iam-013",
+          "sha256": "d02c6de80a4a35927110901448ea4a256a9dfa98c0e1e1906804fef596c92409",
+          "cer": 0.044444444444444446,
+          "exact": false,
+          "complete": true,
+          "error": null,
+          "seconds": 0.9990611999528483,
+          "value_matches": []
+        },
+        {
+          "id": "iam-014",
+          "sha256": "1a776b19ca95c1924b89c87c2e158a7baaf5b0ed332a3ce3ddb3a3e41f11a17f",
+          "cer": 0.1724137931034483,
+          "exact": false,
+          "complete": true,
+          "error": null,
+          "seconds": 1.0673785000108182,
+          "value_matches": []
+        },
+        {
+          "id": "iam-015",
+          "sha256": "930c3f7a19ed7335c354a24cd9348b004f6d447b536449872fd8233a22e35bd3",
+          "cer": 0.02564102564102564,
+          "exact": false,
+          "complete": true,
+          "error": null,
+          "seconds": 0.8427329000551254,
+          "value_matches": []
+        },
+        {
+          "id": "iam-016",
+          "sha256": "28a956938568e568326d62572f7b29957094719358ece49c9bfc48aa9936614c",
+          "cer": 0.18421052631578946,
+          "exact": false,
+          "complete": true,
+          "error": null,
+          "seconds": 0.9073271999950521,
+          "value_matches": []
+        },
+        {
+          "id": "iam-017",
+          "sha256": "7c210007e570a49676e7d687ac35218180ce6876eb2d45c1268ede2f31255bb0",
+          "cer": 0.0,
+          "exact": true,
+          "complete": true,
+          "error": null,
+          "seconds": 0.848931199987419,
+          "value_matches": []
+        },
+        {
+          "id": "iam-018",
+          "sha256": "b0ef2cbb284a25fea2f05ab0c4f0b123a64c76e215f655e7174a7f133ed5270b",
+          "cer": 0.045454545454545456,
+          "exact": false,
+          "complete": true,
+          "error": null,
+          "seconds": 0.9550116999889724,
+          "value_matches": []
+        },
+        {
+          "id": "iam-019",
+          "sha256": "6e03f06454a2108aec9b66fc96142954b3f43d8057b628f8ccd24851c461a254",
+          "cer": 0.0,
+          "exact": true,
+          "complete": true,
+          "error": null,
+          "seconds": 0.8759056000271812,
+          "value_matches": []
+        },
+        {
+          "id": "synthetic-lines-000",
+          "sha256": "b3a27fc388443d2d6df15d53d065142adbf609149601f7b33eac6d3bb353d578",
+          "cer": 0.0,
+          "exact": true,
+          "complete": true,
+          "error": null,
+          "seconds": 0.7564930999651551,
+          "value_matches": [
+            true
+          ]
+        },
+        {
+          "id": "synthetic-lines-001",
+          "sha256": "b5534bb363ed9a882b0a42cb6c580c3d42d86ffef4cb546c060321ecda43ab5e",
+          "cer": 0.0,
+          "exact": true,
+          "complete": true,
+          "error": null,
+          "seconds": 0.7615652999957092,
+          "value_matches": [
+            true
+          ]
+        },
+        {
+          "id": "synthetic-lines-002",
+          "sha256": "0789627c012df0902ae8b0efaf7a800f8c6cf6063ac4a18e8996e98c5ee1d472",
+          "cer": 0.0,
+          "exact": true,
+          "complete": true,
+          "error": null,
+          "seconds": 0.8006445000064559,
+          "value_matches": [
+            true
+          ]
+        },
+        {
+          "id": "synthetic-lines-003",
+          "sha256": "58baabbe4bf687419db244b8a5d81b455caf2af14fa93007fc474d51fd231030",
+          "cer": 0.0,
+          "exact": true,
+          "complete": true,
+          "error": null,
+          "seconds": 0.8855283999582753,
+          "value_matches": [
+            true
+          ]
+        },
+        {
+          "id": "synthetic-lines-004",
+          "sha256": "7ef8756163feab72710704ca69d526e2a6f8a33ef2d3268a07d259746111972b",
+          "cer": 0.0,
+          "exact": true,
+          "complete": true,
+          "error": null,
+          "seconds": 0.7372334999963641,
+          "value_matches": [
+            true
+          ]
+        },
+        {
+          "id": "synthetic-lines-005",
+          "sha256": "cdfd6118b3e5dbbf22c99afa69c8794f493f3c78184675de95d3d0c8d462861a",
+          "cer": 0.0,
+          "exact": true,
+          "complete": true,
+          "error": null,
+          "seconds": 0.6086476999917068,
+          "value_matches": [
+            true
+          ]
+        },
+        {
+          "id": "synthetic-lines-006",
+          "sha256": "62acad353bba1ef7c4d071280b56da18f7e9cbd377190c76d7e1ff596aa12687",
+          "cer": 0.1111111111111111,
+          "exact": false,
+          "complete": true,
+          "error": null,
+          "seconds": 0.6091164000099525,
+          "value_matches": [
+            true
+          ]
+        },
+        {
+          "id": "synthetic-lines-007",
+          "sha256": "bc3f4957a0e3127e9b4bd33a6689a9f8788edae2fd8fca6127a63b54d0bd34a8",
+          "cer": 0.0,
+          "exact": true,
+          "complete": true,
+          "error": null,
+          "seconds": 0.622222000034526,
+          "value_matches": [
+            true
+          ]
+        },
+        {
+          "id": "synthetic-lines-008",
+          "sha256": "7758585706e6dbfd6266cfade11adc812c6389564229d9b79a1744996bebafa0",
+          "cer": 0.0,
+          "exact": true,
+          "complete": true,
+          "error": null,
+          "seconds": 0.5814149999641813,
+          "value_matches": [
+            true
+          ]
+        },
+        {
+          "id": "synthetic-lines-009",
+          "sha256": "b6b9abdd611b2cae61953c3fcab16cad4a5fd93999dda8e0e7dd93263c1cdef5",
+          "cer": 0.0,
+          "exact": true,
+          "complete": true,
+          "error": null,
+          "seconds": 0.6920278000179678,
+          "value_matches": [
+            true
+          ]
+        },
+        {
+          "id": "synthetic-lines-010",
+          "sha256": "a88234ebe22e31a2659c1b5712e0c4b9199c1fe7922a959bc47407e84964b9a8",
+          "cer": 0.0,
+          "exact": true,
+          "complete": true,
+          "error": null,
+          "seconds": 1.6002758999820799,
+          "value_matches": [
+            true
+          ]
+        },
+        {
+          "id": "synthetic-lines-011",
+          "sha256": "79f9f4cd9b12485512fa3fb0eadf59c8b9fe55269c9ae57c10cc826acff920bf",
+          "cer": 0.0,
+          "exact": true,
+          "complete": true,
+          "error": null,
+          "seconds": 0.904960099956952,
+          "value_matches": [
+            true
+          ]
+        },
+        {
+          "id": "synthetic-lines-012",
+          "sha256": "95995fa3de77bbfdee82583292ac6ece4bd903e9ff0e6b93e680883ce701ec4f",
+          "cer": 0.0,
+          "exact": true,
+          "complete": true,
+          "error": null,
+          "seconds": 0.9626146999653429,
+          "value_matches": [
+            true
+          ]
+        },
+        {
+          "id": "synthetic-lines-013",
+          "sha256": "dd7c2542deb896ea20aeb84070c593a147b5499d6ee99f5459818df4b9478756",
+          "cer": 0.0,
+          "exact": true,
+          "complete": true,
+          "error": null,
+          "seconds": 0.6160165999899618,
+          "value_matches": [
+            true
+          ]
+        },
+        {
+          "id": "synthetic-lines-014",
+          "sha256": "fc69e8e985965d3911d95968d201bb158676380bf5618d113e22f9e9edf8b522",
+          "cer": 0.0,
+          "exact": true,
+          "complete": true,
+          "error": null,
+          "seconds": 0.61016149999341,
+          "value_matches": [
+            true
+          ]
+        },
+        {
+          "id": "synthetic-lines-015",
+          "sha256": "7bbfc1fcaead0624ddcb7effd41e32856be2c8871724e529850df34e1289bb00",
+          "cer": 0.0,
+          "exact": true,
+          "complete": true,
+          "error": null,
+          "seconds": 0.7259930999716744,
+          "value_matches": [
+            true
+          ]
+        },
+        {
+          "id": "synthetic-lines-016",
+          "sha256": "6b1986a43ce470341993aa4697931853a5e3347eade86cd91da051ed37657dd3",
+          "cer": 0.0,
+          "exact": true,
+          "complete": true,
+          "error": null,
+          "seconds": 0.4641334000043571,
+          "value_matches": [
+            true
+          ]
+        },
+        {
+          "id": "synthetic-lines-017",
+          "sha256": "fe3ca70f58547e9d3a60969b4edb9a467621f8c4972f5cf00e00e8101605ecf3",
+          "cer": 0.0,
+          "exact": true,
+          "complete": true,
+          "error": null,
+          "seconds": 0.8085334000061266,
+          "value_matches": [
+            true
+          ]
+        },
+        {
+          "id": "synthetic-lines-018",
+          "sha256": "6ca56a5da6bc5ffd50137e0866e198f9d9fc05e2e81215bdb11ba2624aca8682",
+          "cer": 0.0,
+          "exact": true,
+          "complete": true,
+          "error": null,
+          "seconds": 0.7264566000085324,
+          "value_matches": [
+            true
+          ]
+        },
+        {
+          "id": "synthetic-lines-019",
+          "sha256": "4508cf06b6ee339902a28efaaacf3f11adf6af9025bd5fef975bc8e645ed7f1b",
+          "cer": 0.0,
+          "exact": true,
+          "complete": true,
+          "error": null,
+          "seconds": 0.7839508999604732,
+          "value_matches": [
+            true
+          ]
+        }
+      ]
+    },
+    "glm-1024": {
+      "engine": "glm",
+      "date": "2026-10-31T17:09:24+0100",
+      "glm_max_side": 1024,
+      "qualification": "Public line crops and fictitious scan fixtures; not production redaction qualification.",
+      "resources": {
+        "runtime": {
+          "path": "C:\\Users\\pablo\\AppData\\Local\\Temp\\reglas-ocr-llamacpp-b12001\\runtime\\llama-server.exe",
+          "sha256": "791af0f00f25e0cdc7d9eb37ebc95f9a9627b85d1d1a877e3390de459abf1e81"
+        },
+        "model": {
+          "path": "eval\\ocr-candidates-2026-10-31\\glm-model\\GLM-OCR-Q8_0.gguf",
+          "sha256": "45bc244a6446aff850521dc41f18bc8d7105ad5f0c2c8c28af04e7cc4f4d50b1"
+        },
+        "projector": {
+          "path": "eval\\ocr-candidates-2026-10-31\\glm-model\\mmproj-GLM-OCR-Q8_0.gguf",
+          "sha256": "9c4b58e33e316ed142eb5dcb41abec3844d3e6e5dc361ffb782c3fa9d175141f"
+        }
+      },
+      "startup_seconds": 2.9715765999862924,
+      "summary": {
+        "census": {
+          "samples": 20,
+          "mean_cer": 0.09751248751248752,
+          "exact": 0.0,
+          "literal_value_recall": 0.6060606060606061,
+          "value_count": 33,
+          "median_seconds": 2.2917751999921165,
+          "failures": 0
+        },
+        "iam": {
+          "samples": 20,
+          "mean_cer": 0.03457634065027812,
+          "exact": 0.15,
+          "literal_value_recall": null,
+          "value_count": 0,
+          "median_seconds": 2.736348150006961,
+          "failures": 0
+        },
+        "synthetic-lines": {
+          "samples": 20,
+          "mean_cer": 0.048865600328471835,
+          "exact": 0.5,
+          "literal_value_recall": 0.5,
+          "value_count": 20,
+          "median_seconds": 2.209372449986404,
+          "failures": 0
+        },
+        "synthetic-pages": {
+          "samples": 2,
+          "mean_cer": 0.0,
+          "exact": 1.0,
+          "literal_value_recall": 1.0,
+          "value_count": 18,
+          "median_seconds": 4.380576450028457,
+          "failures": 0
+        }
+      },
+      "label": "GLM-OCR Q8",
+      "sampleCount": 62,
+      "requestSeconds": 173.66401530004805,
+      "sourceReceiptSha256": "d1014934ac189b589dfc0d75b61cb5813f20a3b0d2ebb048c9f7c94aa7d0e83c",
+      "modelRevision": "65a42de1148dbed2297e922b5dbc7d9b70c36578",
+      "runtimeBuild": "b12001",
+      "samples": [
+        {
+          "id": "synthetic-page-clean",
+          "sha256": "4b79721dea67b4c07a22bb60df891f39c6a9715049f692a52efae378db9d0cd7",
+          "cer": 0.0,
+          "exact": true,
+          "complete": true,
+          "error": null,
+          "seconds": 4.586641200003214,
+          "value_matches": [
+            true,
+            true,
+            true,
+            true,
+            true,
+            true,
+            true,
+            true,
+            true
+          ],
+          "processedImageSha256": "14d9955b37a18c28bcb218bee2614b4a631c6e64d8ea895236fd59dc2400e6b7"
+        },
+        {
+          "id": "synthetic-page-degraded",
+          "sha256": "748b84995199506a43cc66f17bdd47e9ef5efd6d5cef364c448bf031fd3737ee",
+          "cer": 0.0,
+          "exact": true,
+          "complete": true,
+          "error": null,
+          "seconds": 4.174511700053699,
+          "value_matches": [
+            true,
+            true,
+            true,
+            true,
+            true,
+            true,
+            true,
+            true,
+            true
+          ],
+          "processedImageSha256": "585067a9cec6a3fefa37a857c4759e470ff63b036504dab0918e0698a10a1c65"
+        },
+        {
+          "id": "census-000",
+          "sha256": "439f1736d0a66b97c793e7203d487162bfba9d8115c63865cde066882a2ec0ab",
+          "cer": 0.0,
+          "exact": false,
+          "complete": true,
+          "error": null,
+          "seconds": 4.772649699996691,
+          "value_matches": [
+            true,
+            true
+          ],
+          "processedImageSha256": "a4f3fd08c07ba209aefd7f009c44ff92d89464d43b9e67177cccd63370558a27"
+        },
+        {
+          "id": "census-001",
+          "sha256": "d0dc38467bd43c46e75b252eee0b9d3b12a7f822c7890c2b7a3867e18fbf7cb5",
+          "cer": 0.0,
+          "exact": false,
+          "complete": true,
+          "error": null,
+          "seconds": 2.1403341999975964,
+          "value_matches": [
+            true
+          ],
+          "processedImageSha256": "625c9e08b60bfbe6bf6f2bb6bcbc3dd008d8946b7bb10f01060b9908a4f10949"
+        },
+        {
+          "id": "census-002",
+          "sha256": "7b5ebcc849d56139d731a88012da3fd871be0166c43e9c1d36b4a1c3c554656a",
+          "cer": 0.0,
+          "exact": false,
+          "complete": true,
+          "error": null,
+          "seconds": 2.252720299991779,
+          "value_matches": [
+            true
+          ],
+          "processedImageSha256": "652caa015b44a2885b5897c7ee2df7ed61c22af5f9bb9f79955a715cdfdafbdc"
+        },
+        {
+          "id": "census-003",
+          "sha256": "cdf94054a77bfc1760b68612846a9e1462a38d655b9d9b20fc769659a18916f4",
+          "cer": 0.1111111111111111,
+          "exact": false,
+          "complete": true,
+          "error": null,
+          "seconds": 2.281380900007207,
+          "value_matches": [
+            false
+          ],
+          "processedImageSha256": "3c874a5e066adf87924e36bba88bc064e108438166747ac8947fb98bbde8607d"
+        },
+        {
+          "id": "census-004",
+          "sha256": "6321dc0a2d5083165f6aee0517ef6a2773b685b0caf2c6e0bea6d6b4992c6ea8",
+          "cer": 0.0,
+          "exact": false,
+          "complete": true,
+          "error": null,
+          "seconds": 2.3633974000113085,
+          "value_matches": [
+            true,
+            true
+          ],
+          "processedImageSha256": "976de3861efc0f975fe86b1be53d4fb923251e1d790057a5d372c7649b2a6f10"
+        },
+        {
+          "id": "census-005",
+          "sha256": "72c27963e50fa58a31c16829b0168191dd706f829ed3753717a80001c7f31124",
+          "cer": 0.0,
+          "exact": false,
+          "complete": true,
+          "error": null,
+          "seconds": 2.6359620000002906,
+          "value_matches": [
+            true
+          ],
+          "processedImageSha256": "c0e1020f0a5ada3205ca721183b31d497fe281cacce8afb2b2a426051c8072ec"
+        },
+        {
+          "id": "census-006",
+          "sha256": "e87aca55b54a37b1613f0d187bbc1f890d7e46b0312f05994d0fbe4c1c840e76",
+          "cer": 0.0,
+          "exact": false,
+          "complete": true,
+          "error": null,
+          "seconds": 2.3232972000259906,
+          "value_matches": [
+            true
+          ],
+          "processedImageSha256": "5829c33c0ca5b6fcbe3aac50f31708cdb3a0e9ec3a3fd43054e74e64f7f8b849"
+        },
+        {
+          "id": "census-007",
+          "sha256": "06e009ddfbb098fe43e52c88ac68029d1469f6e17587b88f7f6f4f2318a6b90b",
+          "cer": 0.1,
+          "exact": false,
+          "complete": true,
+          "error": null,
+          "seconds": 2.5731558999978006,
+          "value_matches": [
+            true,
+            true,
+            false
+          ],
+          "processedImageSha256": "c42c97035a83e5c970054dc7f2ed9d4f940bfba3c62eeddb0bec2bdfd49aeb0c"
+        },
+        {
+          "id": "census-008",
+          "sha256": "a6182b40e4d62faef1f9fe9e99467df2a4001e44c772cc445a8746f9a8cf3c07",
+          "cer": 0.0,
+          "exact": false,
+          "complete": true,
+          "error": null,
+          "seconds": 2.612594900012482,
+          "value_matches": [
+            true
+          ],
+          "processedImageSha256": "59843d8f32284cef819bf46c0b4f6f70f2340099e511ebd986a3cdc9b2b7f2a5"
+        },
+        {
+          "id": "census-009",
+          "sha256": "75199f757cc0433a9a8246451f4db10bc38909f2896895ea63fdb18ce5b34bae",
+          "cer": 0.09090909090909091,
+          "exact": false,
+          "complete": true,
+          "error": null,
+          "seconds": 2.356162999989465,
+          "value_matches": [
+            false,
+            true
+          ],
+          "processedImageSha256": "47de6992a8b3302c01e98dfe2eea89dfa17a6f4fdee8181b2a7ac49a238d49b3"
+        },
+        {
+          "id": "census-010",
+          "sha256": "445a857487f5b1db0a8a86b74ac2ea7ad944bce72a16384a80431eac91cacc3d",
+          "cer": 0.2222222222222222,
+          "exact": false,
+          "complete": true,
+          "error": null,
+          "seconds": 2.300773599999957,
+          "value_matches": [
+            false,
+            true
+          ],
+          "processedImageSha256": "b37e8c6cfa86b0b40d8f83b1da109570e540acc81bbb868ffa6e5e5946c8f6c7"
+        },
+        {
+          "id": "census-011",
+          "sha256": "c5658720c3b9785943d5c0c47f01c23b02029f5737f7f836e247d56019677137",
+          "cer": 0.2,
+          "exact": false,
+          "complete": true,
+          "error": null,
+          "seconds": 2.201631899981294,
+          "value_matches": [
+            true,
+            false
+          ],
+          "processedImageSha256": "fac555444851cf547ccce56cb3afb85227fead11e968e5adebc526945232d32f"
+        },
+        {
+          "id": "census-012",
+          "sha256": "b731b3a39f25ed0ca0036d923a42aed446b9da9afd778cd564753ac96d761233",
+          "cer": 0.0,
+          "exact": false,
+          "complete": true,
+          "error": null,
+          "seconds": 2.2634102000156417,
+          "value_matches": [
+            true,
+            true
+          ],
+          "processedImageSha256": "5354af68e9ffb4d446d4db24c39b91b95b93a0cac9d00ecd216f25ec040cc3ec"
+        },
+        {
+          "id": "census-013",
+          "sha256": "4a76228d1223ad4e586b2f6699f0ec0c22d65174bf06dbb76275a187fc50dcec",
+          "cer": 0.23076923076923078,
+          "exact": false,
+          "complete": true,
+          "error": null,
+          "seconds": 2.4989984999992885,
+          "value_matches": [
+            false,
+            false
+          ],
+          "processedImageSha256": "2857679f949f034966c47c67276f993368c599217c8c915f58769e0777eb8065"
+        },
+        {
+          "id": "census-014",
+          "sha256": "b8b0e6dbff064e2541b26d970d423490b37c73040a8341fa651bb5208ec4c683",
+          "cer": 0.0,
+          "exact": false,
+          "complete": true,
+          "error": null,
+          "seconds": 1.9342325999750756,
+          "value_matches": [
+            true,
+            true
+          ],
+          "processedImageSha256": "419ec2ca402a57d5261e3dc09aa9743b0c040468b3b453e791071a27c1be0efd"
+        },
+        {
+          "id": "census-015",
+          "sha256": "361f756a6f6bb2d292c274831da1e81fee012bf011e7270cefdfa124b0bda5a7",
+          "cer": 0.35714285714285715,
+          "exact": false,
+          "complete": true,
+          "error": null,
+          "seconds": 2.1481664999737404,
+          "value_matches": [
+            false,
+            false
+          ],
+          "processedImageSha256": "bc8158598cd20623e2cfbf9c9544a8f0c42441e0dda8bd6fb300774377a5a4f1"
+        },
+        {
+          "id": "census-016",
+          "sha256": "658dff6e4d9b75b3e006956bb2b3818b2e413330e4c7b7d8a53ab94506a8e197",
+          "cer": 0.4,
+          "exact": false,
+          "complete": true,
+          "error": null,
+          "seconds": 2.278175099985674,
+          "value_matches": [
+            false,
+            false
+          ],
+          "processedImageSha256": "a2ecb813e4492273d1da3c079e43d0eecf09c36d5479890268bdf58cbaf65f02"
+        },
+        {
+          "id": "census-017",
+          "sha256": "dc93e4a536da36bf47fe01732c70a2f98ce7722c180a0ddc63563f35865d6d97",
+          "cer": 0.07142857142857142,
+          "exact": false,
+          "complete": true,
+          "error": null,
+          "seconds": 2.637162199942395,
+          "value_matches": [
+            true,
+            false
+          ],
+          "processedImageSha256": "9aca4fd34685bf4390418789e436521a3a870ed1d67bc4e65723ed37daf65f80"
+        },
+        {
+          "id": "census-018",
+          "sha256": "e6feb0fad66a06b0b06da5a19fad66d2a46092a99e7c52dd7f705ede8471d0fb",
+          "cer": 0.16666666666666666,
+          "exact": false,
+          "complete": true,
+          "error": null,
+          "seconds": 2.2827767999842763,
+          "value_matches": [
+            false
+          ],
+          "processedImageSha256": "d8cb203d4c96bcace990e10e18dfb29b789fa946c14642bc6bd97a231a65d213"
+        },
+        {
+          "id": "census-019",
+          "sha256": "00092787e26e0291f6e0946786a676689d86cdc7fccce53dd87fd9d06eb7358a",
+          "cer": 0.0,
+          "exact": false,
+          "complete": true,
+          "error": null,
+          "seconds": 2.2389549000072293,
+          "value_matches": [
+            true
+          ],
+          "processedImageSha256": "016f26e28fa67f1972350a1205ad8c7801f775c673c5c2048a02621833b3c959"
+        },
+        {
+          "id": "iam-000",
+          "sha256": "1884d7c125ddb4f9c22f4ac22da98cff82cf571b2aa85d23d06521fcd35267ea",
+          "cer": 0.0,
+          "exact": true,
+          "complete": true,
+          "error": null,
+          "seconds": 2.4962833000463434,
+          "value_matches": [],
+          "processedImageSha256": "70bdf5ba51801bb4dcef4ca223c79eb36c65a656fec01060de86acf96f4d8330"
+        },
+        {
+          "id": "iam-001",
+          "sha256": "57f1fb05ce5a5dc9571f603d833dacbabbe793b5dea75d04b406bb6aef9fa422",
+          "cer": 0.024390243902439025,
+          "exact": false,
+          "complete": true,
+          "error": null,
+          "seconds": 2.914636400004383,
+          "value_matches": [],
+          "processedImageSha256": "cba14539db96a008b03d5349fad513fc69264fd6d4a4914d538c81a2155a56cd"
+        },
+        {
+          "id": "iam-002",
+          "sha256": "aa84f7ffd69f89921b562001290c77308a14ec3df940beb28735e1e68cd017c5",
+          "cer": 0.05357142857142857,
+          "exact": false,
+          "complete": true,
+          "error": null,
+          "seconds": 3.0380607999977656,
+          "value_matches": [],
+          "processedImageSha256": "0f50b3ef0fa283da1c59536479c02e41be7c74674662660230e6043f6c3b0246"
+        },
+        {
+          "id": "iam-003",
+          "sha256": "81bf15677e8d12897378f2cb96223ee06b5fe0c0c42ee55ef2336d6f80806ca7",
+          "cer": 0.038461538461538464,
+          "exact": false,
+          "complete": true,
+          "error": null,
+          "seconds": 2.671970799972769,
+          "value_matches": [],
+          "processedImageSha256": "33cee2bba648cec90605ba40feb18dc3c4a8dbbfb86690ad7156a514851b8f82"
+        },
+        {
+          "id": "iam-004",
+          "sha256": "339d3bdff3fb67278a9bd4e4eee20b3573b7c0e35d4f006a0f4b5cefaa960e57",
+          "cer": 0.02857142857142857,
+          "exact": false,
+          "complete": true,
+          "error": null,
+          "seconds": 3.936658199992962,
+          "value_matches": [],
+          "processedImageSha256": "b4ec2a9e64e24018df0c8f0c5fd8d98ca3bd384fa70b7b39c00ff1a6f2d6ce49"
+        },
+        {
+          "id": "iam-005",
+          "sha256": "85cf97c5dbecdf6db8420e5737cb1a92bfab3b6a1e12795a2077054054069c9f",
+          "cer": 0.016666666666666666,
+          "exact": false,
+          "complete": true,
+          "error": null,
+          "seconds": 5.167604900023434,
+          "value_matches": [],
+          "processedImageSha256": "8f98d85fa3cc9a927f4674ca282cddd104a4f8db50a6be4fd3dd1a33b2f7fd70"
+        },
+        {
+          "id": "iam-006",
+          "sha256": "7f740d2d11a3598b597b4876e73fe485e485cfc74141fd6eefd9c42989871ef8",
+          "cer": 0.022222222222222223,
+          "exact": false,
+          "complete": true,
+          "error": null,
+          "seconds": 4.74406400002772,
+          "value_matches": [],
+          "processedImageSha256": "a0045a0ec499ac9418f217b38fe6837f8296e6290945c4251096fa39aba00cb4"
+        },
+        {
+          "id": "iam-007",
+          "sha256": "fd62654075c2ba75aa76f24daed8496b5336c753b794976af4cd723ba6570abf",
+          "cer": 0.05263157894736842,
+          "exact": false,
+          "complete": true,
+          "error": null,
+          "seconds": 3.706747499993071,
+          "value_matches": [],
+          "processedImageSha256": "c9b9a155082c1fd6f0f28c66da52a7896d87c3a78769165f9557b0ff2d1dec6d"
+        },
+        {
+          "id": "iam-008",
+          "sha256": "5a4e872c7f2abe34b03e973601b12d422f58bc3e9075a297b9b143dcdfbd9e7f",
+          "cer": 0.02040816326530612,
+          "exact": false,
+          "complete": true,
+          "error": null,
+          "seconds": 4.521797799970955,
+          "value_matches": [],
+          "processedImageSha256": "b5e65d9411c8cda1ef2b2c79853a480de5cc21e7654b7b2b59822ca3a5042a70"
+        },
+        {
+          "id": "iam-009",
+          "sha256": "7fcd02dcd8115e01050321e214701c2bee6d26bff10c0decabcbda29167f4a51",
+          "cer": 0.022727272727272728,
+          "exact": false,
+          "complete": true,
+          "error": null,
+          "seconds": 2.8007255000411533,
+          "value_matches": [],
+          "processedImageSha256": "112b16aae2850f2adcdbc7f8a8f8a5548bd164d73679aa15b49a8fd33988a634"
+        },
+        {
+          "id": "iam-010",
+          "sha256": "b51d2474632c169446eef5b224d39c49d688f3ab5b3efb00751ed7480c8bbc23",
+          "cer": 0.02040816326530612,
+          "exact": false,
+          "complete": true,
+          "error": null,
+          "seconds": 2.4944467999739572,
+          "value_matches": [],
+          "processedImageSha256": "0d77ce6ebafc6cf49553bb47a2bb8e949fe7c867cb25b10b4ef9df3ebc5978a2"
+        },
+        {
+          "id": "iam-011",
+          "sha256": "38aaafb5f91d1c28aa6f4519140c59633c7e5d865a53dd0d1466825ba7ba8045",
+          "cer": 0.02,
+          "exact": false,
+          "complete": true,
+          "error": null,
+          "seconds": 2.234019299969077,
+          "value_matches": [],
+          "processedImageSha256": "ac5fe1c50d9d0af88605543d7c4f4a2ea58b14109fc403751cbf7fd9a26fa4d7"
+        },
+        {
+          "id": "iam-012",
+          "sha256": "b8ab5f9be8aeb7f8254b24b68a34aa1aacdcca85a69f59e871fc18c53c01860c",
+          "cer": 0.047619047619047616,
+          "exact": false,
+          "complete": true,
+          "error": null,
+          "seconds": 2.240049200016074,
+          "value_matches": [],
+          "processedImageSha256": "09fc4b3a97f0d426bd355798c78a4bcceaf62de6f05584d2c68aa323859d25e7"
+        },
+        {
+          "id": "iam-013",
+          "sha256": "d02c6de80a4a35927110901448ea4a256a9dfa98c0e1e1906804fef596c92409",
+          "cer": 0.022222222222222223,
+          "exact": false,
+          "complete": true,
+          "error": null,
+          "seconds": 1.832821000018157,
+          "value_matches": [],
+          "processedImageSha256": "9055743ff9880b5024e0b58a9424c7a459b512acbd11c99621223cd1e25a7f73"
+        },
+        {
+          "id": "iam-014",
+          "sha256": "1a776b19ca95c1924b89c87c2e158a7baaf5b0ed332a3ce3ddb3a3e41f11a17f",
+          "cer": 0.15517241379310345,
+          "exact": false,
+          "complete": true,
+          "error": null,
+          "seconds": 2.5070751999737695,
+          "value_matches": [],
+          "processedImageSha256": "157e896ab053ed4852e80414db5290c15cf5b9b3fcefe9ec02e9e5c05b547627"
+        },
+        {
+          "id": "iam-015",
+          "sha256": "930c3f7a19ed7335c354a24cd9348b004f6d447b536449872fd8233a22e35bd3",
+          "cer": 0.02564102564102564,
+          "exact": false,
+          "complete": true,
+          "error": null,
+          "seconds": 2.2035585999838077,
+          "value_matches": [],
+          "processedImageSha256": "e2134e4d5d3cbf9850a5aa97b39b81faff630d89b9d82f102ccf6dc5342813fa"
+        },
+        {
+          "id": "iam-016",
+          "sha256": "28a956938568e568326d62572f7b29957094719358ece49c9bfc48aa9936614c",
+          "cer": 0.05263157894736842,
+          "exact": false,
+          "complete": true,
+          "error": null,
+          "seconds": 2.4749210000154562,
+          "value_matches": [],
+          "processedImageSha256": "7431e33961f03b603f9a612b1485e269b1b487dd9ec65cd1c30d45a4dad5dcea"
+        },
+        {
+          "id": "iam-017",
+          "sha256": "7c210007e570a49676e7d687ac35218180ce6876eb2d45c1268ede2f31255bb0",
+          "cer": 0.0,
+          "exact": true,
+          "complete": true,
+          "error": null,
+          "seconds": 2.512720799946692,
+          "value_matches": [],
+          "processedImageSha256": "53209893ec7deea63b332a7c84b0f621763a9e93dc6213f049616a88ae6f335c"
+        },
+        {
+          "id": "iam-018",
+          "sha256": "b0ef2cbb284a25fea2f05ab0c4f0b123a64c76e215f655e7174a7f133ed5270b",
+          "cer": 0.06818181818181818,
+          "exact": false,
+          "complete": true,
+          "error": null,
+          "seconds": 4.387935300008394,
+          "value_matches": [],
+          "processedImageSha256": "e103e5b56cb4eacde3bd24624e27f984433c8188329d1423d4121e62bce826fb"
+        },
+        {
+          "id": "iam-019",
+          "sha256": "6e03f06454a2108aec9b66fc96142954b3f43d8057b628f8ccd24851c461a254",
+          "cer": 0.0,
+          "exact": true,
+          "complete": true,
+          "error": null,
+          "seconds": 2.9209769000299275,
+          "value_matches": [],
+          "processedImageSha256": "33d1c5d1f336ee4fb8972b00618074daa1e93dbd27d43d13d70630d6a707a1c1"
+        },
+        {
+          "id": "synthetic-lines-000",
+          "sha256": "b3a27fc388443d2d6df15d53d065142adbf609149601f7b33eac6d3bb353d578",
+          "cer": 0.058823529411764705,
+          "exact": false,
+          "complete": true,
+          "error": null,
+          "seconds": 8.136868599976879,
+          "value_matches": [
+            false
+          ],
+          "processedImageSha256": "b3a27fc388443d2d6df15d53d065142adbf609149601f7b33eac6d3bb353d578"
+        },
+        {
+          "id": "synthetic-lines-001",
+          "sha256": "b5534bb363ed9a882b0a42cb6c580c3d42d86ffef4cb546c060321ecda43ab5e",
+          "cer": 0.07692307692307693,
+          "exact": false,
+          "complete": true,
+          "error": null,
+          "seconds": 2.2035386000061408,
+          "value_matches": [
+            false
+          ],
+          "processedImageSha256": "b5534bb363ed9a882b0a42cb6c580c3d42d86ffef4cb546c060321ecda43ab5e"
+        },
+        {
+          "id": "synthetic-lines-002",
+          "sha256": "0789627c012df0902ae8b0efaf7a800f8c6cf6063ac4a18e8996e98c5ee1d472",
+          "cer": 0.0,
+          "exact": true,
+          "complete": true,
+          "error": null,
+          "seconds": 2.4431314000394195,
+          "value_matches": [
+            true
+          ],
+          "processedImageSha256": "0789627c012df0902ae8b0efaf7a800f8c6cf6063ac4a18e8996e98c5ee1d472"
+        },
+        {
+          "id": "synthetic-lines-003",
+          "sha256": "58baabbe4bf687419db244b8a5d81b455caf2af14fa93007fc474d51fd231030",
+          "cer": 0.0,
+          "exact": true,
+          "complete": true,
+          "error": null,
+          "seconds": 2.215206299966667,
+          "value_matches": [
+            true
+          ],
+          "processedImageSha256": "58baabbe4bf687419db244b8a5d81b455caf2af14fa93007fc474d51fd231030"
+        },
+        {
+          "id": "synthetic-lines-004",
+          "sha256": "7ef8756163feab72710704ca69d526e2a6f8a33ef2d3268a07d259746111972b",
+          "cer": 0.043478260869565216,
+          "exact": false,
+          "complete": true,
+          "error": null,
+          "seconds": 2.540180700016208,
+          "value_matches": [
+            false
+          ],
+          "processedImageSha256": "7ef8756163feab72710704ca69d526e2a6f8a33ef2d3268a07d259746111972b"
+        },
+        {
+          "id": "synthetic-lines-005",
+          "sha256": "cdfd6118b3e5dbbf22c99afa69c8794f493f3c78184675de95d3d0c8d462861a",
+          "cer": 0.07692307692307693,
+          "exact": false,
+          "complete": true,
+          "error": null,
+          "seconds": 3.1123743999633007,
+          "value_matches": [
+            false
+          ],
+          "processedImageSha256": "cdfd6118b3e5dbbf22c99afa69c8794f493f3c78184675de95d3d0c8d462861a"
+        },
+        {
+          "id": "synthetic-lines-006",
+          "sha256": "62acad353bba1ef7c4d071280b56da18f7e9cbd377190c76d7e1ff596aa12687",
+          "cer": 0.0,
+          "exact": true,
+          "complete": true,
+          "error": null,
+          "seconds": 4.150216900045052,
+          "value_matches": [
+            true
+          ],
+          "processedImageSha256": "62acad353bba1ef7c4d071280b56da18f7e9cbd377190c76d7e1ff596aa12687"
+        },
+        {
+          "id": "synthetic-lines-007",
+          "sha256": "bc3f4957a0e3127e9b4bd33a6689a9f8788edae2fd8fca6127a63b54d0bd34a8",
+          "cer": 0.038461538461538464,
+          "exact": false,
+          "complete": true,
+          "error": null,
+          "seconds": 2.1867454000166617,
+          "value_matches": [
+            false
+          ],
+          "processedImageSha256": "bc3f4957a0e3127e9b4bd33a6689a9f8788edae2fd8fca6127a63b54d0bd34a8"
+        },
+        {
+          "id": "synthetic-lines-008",
+          "sha256": "7758585706e6dbfd6266cfade11adc812c6389564229d9b79a1744996bebafa0",
+          "cer": 0.058823529411764705,
+          "exact": false,
+          "complete": true,
+          "error": null,
+          "seconds": 2.8459687000140548,
+          "value_matches": [
+            false
+          ],
+          "processedImageSha256": "7758585706e6dbfd6266cfade11adc812c6389564229d9b79a1744996bebafa0"
+        },
+        {
+          "id": "synthetic-lines-009",
+          "sha256": "b6b9abdd611b2cae61953c3fcab16cad4a5fd93999dda8e0e7dd93263c1cdef5",
+          "cer": 0.047619047619047616,
+          "exact": false,
+          "complete": true,
+          "error": null,
+          "seconds": 1.943282000022009,
+          "value_matches": [
+            false
+          ],
+          "processedImageSha256": "b6b9abdd611b2cae61953c3fcab16cad4a5fd93999dda8e0e7dd93263c1cdef5"
+        },
+        {
+          "id": "synthetic-lines-010",
+          "sha256": "a88234ebe22e31a2659c1b5712e0c4b9199c1fe7922a959bc47407e84964b9a8",
+          "cer": 0.1724137931034483,
+          "exact": false,
+          "complete": true,
+          "error": null,
+          "seconds": 2.510796499962453,
+          "value_matches": [
+            false
+          ],
+          "processedImageSha256": "a88234ebe22e31a2659c1b5712e0c4b9199c1fe7922a959bc47407e84964b9a8"
+        },
+        {
+          "id": "synthetic-lines-011",
+          "sha256": "79f9f4cd9b12485512fa3fb0eadf59c8b9fe55269c9ae57c10cc826acff920bf",
+          "cer": 0.0,
+          "exact": true,
+          "complete": true,
+          "error": null,
+          "seconds": 2.9331129000056535,
+          "value_matches": [
+            true
+          ],
+          "processedImageSha256": "79f9f4cd9b12485512fa3fb0eadf59c8b9fe55269c9ae57c10cc826acff920bf"
+        },
+        {
+          "id": "synthetic-lines-012",
+          "sha256": "95995fa3de77bbfdee82583292ac6ece4bd903e9ff0e6b93e680883ce701ec4f",
+          "cer": 0.0,
+          "exact": true,
+          "complete": true,
+          "error": null,
+          "seconds": 2.7455021000350825,
+          "value_matches": [
+            true
+          ],
+          "processedImageSha256": "95995fa3de77bbfdee82583292ac6ece4bd903e9ff0e6b93e680883ce701ec4f"
+        },
+        {
+          "id": "synthetic-lines-013",
+          "sha256": "dd7c2542deb896ea20aeb84070c593a147b5499d6ee99f5459818df4b9478756",
+          "cer": 0.0,
+          "exact": true,
+          "complete": true,
+          "error": null,
+          "seconds": 2.0217353000189178,
+          "value_matches": [
+            true
+          ],
+          "processedImageSha256": "dd7c2542deb896ea20aeb84070c593a147b5499d6ee99f5459818df4b9478756"
+        },
+        {
+          "id": "synthetic-lines-014",
+          "sha256": "fc69e8e985965d3911d95968d201bb158676380bf5618d113e22f9e9edf8b522",
+          "cer": 0.0,
+          "exact": true,
+          "complete": true,
+          "error": null,
+          "seconds": 2.192729599948507,
+          "value_matches": [
+            true
+          ],
+          "processedImageSha256": "fc69e8e985965d3911d95968d201bb158676380bf5618d113e22f9e9edf8b522"
+        },
+        {
+          "id": "synthetic-lines-015",
+          "sha256": "7bbfc1fcaead0624ddcb7effd41e32856be2c8871724e529850df34e1289bb00",
+          "cer": 0.25,
+          "exact": false,
+          "complete": true,
+          "error": null,
+          "seconds": 1.9365455000079237,
+          "value_matches": [
+            false
+          ],
+          "processedImageSha256": "7bbfc1fcaead0624ddcb7effd41e32856be2c8871724e529850df34e1289bb00"
+        },
+        {
+          "id": "synthetic-lines-016",
+          "sha256": "6b1986a43ce470341993aa4697931853a5e3347eade86cd91da051ed37657dd3",
+          "cer": 0.0,
+          "exact": true,
+          "complete": true,
+          "error": null,
+          "seconds": 2.033102300018072,
+          "value_matches": [
+            true
+          ],
+          "processedImageSha256": "6b1986a43ce470341993aa4697931853a5e3347eade86cd91da051ed37657dd3"
+        },
+        {
+          "id": "synthetic-lines-017",
+          "sha256": "fe3ca70f58547e9d3a60969b4edb9a467621f8c4972f5cf00e00e8101605ecf3",
+          "cer": 0.15384615384615385,
+          "exact": false,
+          "complete": true,
+          "error": null,
+          "seconds": 1.7864726000116207,
+          "value_matches": [
+            false
+          ],
+          "processedImageSha256": "fe3ca70f58547e9d3a60969b4edb9a467621f8c4972f5cf00e00e8101605ecf3"
+        },
+        {
+          "id": "synthetic-lines-018",
+          "sha256": "6ca56a5da6bc5ffd50137e0866e198f9d9fc05e2e81215bdb11ba2624aca8682",
+          "cer": 0.0,
+          "exact": true,
+          "complete": true,
+          "error": null,
+          "seconds": 2.014166600012686,
+          "value_matches": [
+            true
+          ],
+          "processedImageSha256": "6ca56a5da6bc5ffd50137e0866e198f9d9fc05e2e81215bdb11ba2624aca8682"
+        },
+        {
+          "id": "synthetic-lines-019",
+          "sha256": "4508cf06b6ee339902a28efaaacf3f11adf6af9025bd5fef975bc8e645ed7f1b",
+          "cer": 0.0,
+          "exact": true,
+          "complete": true,
+          "error": null,
+          "seconds": 2.0481749000027776,
+          "value_matches": [
+            true
+          ],
+          "processedImageSha256": "4508cf06b6ee339902a28efaaacf3f11adf6af9025bd5fef975bc8e645ed7f1b"
+        }
+      ]
+    },
+    "unlimited-cuda": {
+      "engine": "unlimited",
+      "date": "2026-10-31T17:17:03+0100",
+      "glm_max_side": null,
+      "qualification": "Public line crops and fictitious scan fixtures; not production redaction qualification.",
+      "resources": {
+        "worker": {
+          "path": "tmp\\benchmark-unlimited-streaming\\unlimited-ocr.py",
+          "sha256": "16a5bd52382687f4d85ef23bc05ceab3bc01bc33a8cb8f6e8e442fd216af56ed"
+        }
+      },
+      "model_identity": {
+        "model": "baidu/Unlimited-OCR-2",
+        "revision": "c14071b549f4fcab10909f3c4acc6a2edb366947"
+      },
+      "startup_seconds": 70.33511609997367,
+      "summary": {
+        "census": {
+          "samples": 20,
+          "mean_cer": 0.9678571428571429,
+          "exact": 0.0,
+          "literal_value_recall": 0.0,
+          "value_count": 33,
+          "median_seconds": 5.865296500007389,
+          "failures": 19
+        },
+        "iam": {
+          "samples": 20,
+          "mean_cer": 0.6256443747823058,
+          "exact": 0.1,
+          "literal_value_recall": null,
+          "value_count": 0,
+          "median_seconds": 7.953359400009504,
+          "failures": 12
+        },
+        "synthetic-lines": {
+          "samples": 20,
+          "mean_cer": 0.010110420979986197,
+          "exact": 0.85,
+          "literal_value_recall": 0.9,
+          "value_count": 20,
+          "median_seconds": 9.25929705001181,
+          "failures": 0
+        },
+        "synthetic-pages": {
+          "samples": 2,
+          "mean_cer": 0.004901960784313725,
+          "exact": 0.0,
+          "literal_value_recall": 0.8333333333333334,
+          "value_count": 18,
+          "median_seconds": 88.11441030001151,
+          "failures": 0
+        }
+      },
+      "label": "Unlimited 2 base",
+      "sampleCount": 62,
+      "requestSeconds": 663.4884504000074,
+      "sourceReceiptSha256": "49a262d83c7da4b3f708f712f1cc4b689b74476da7ea9dba6b4cf94f917b0330",
+      "unlimited_direct_cuda": true,
+      "executed_worker": {
+        "path": "tmp\\benchmark-unlimited-streaming\\unlimited-ocr.py",
+        "sha256": "16a5bd52382687f4d85ef23bc05ceab3bc01bc33a8cb8f6e8e442fd216af56ed"
+      },
+      "note": "A retained manually adapted direct-CUDA worker ran before the harness gained the equivalent --unlimited-direct-cuda option.",
+      "samples": [
+        {
+          "id": "synthetic-page-clean",
+          "sha256": "4b79721dea67b4c07a22bb60df891f39c6a9715049f692a52efae378db9d0cd7",
+          "cer": 0.006535947712418301,
+          "exact": false,
+          "complete": true,
+          "error": null,
+          "seconds": 90.9494948000065,
+          "value_matches": [
+            false,
+            true,
+            false,
+            true,
+            true,
+            true,
+            true,
+            true,
+            true
+          ]
+        },
+        {
+          "id": "synthetic-page-degraded",
+          "sha256": "748b84995199506a43cc66f17bdd47e9ef5efd6d5cef364c448bf031fd3737ee",
+          "cer": 0.0032679738562091504,
+          "exact": false,
+          "complete": true,
+          "error": null,
+          "seconds": 85.27932580001652,
+          "value_matches": [
+            true,
+            true,
+            false,
+            true,
+            true,
+            true,
+            true,
+            true,
+            true
+          ]
+        },
+        {
+          "id": "census-000",
+          "sha256": "439f1736d0a66b97c793e7203d487162bfba9d8115c63865cde066882a2ec0ab",
+          "cer": 1.0,
+          "exact": false,
+          "complete": false,
+          "error": null,
+          "seconds": 5.868626700015739,
+          "value_matches": [
+            false,
+            false
+          ]
+        },
+        {
+          "id": "census-001",
+          "sha256": "d0dc38467bd43c46e75b252eee0b9d3b12a7f822c7890c2b7a3867e18fbf7cb5",
+          "cer": 1.0,
+          "exact": false,
+          "complete": false,
+          "error": null,
+          "seconds": 5.947740599978715,
+          "value_matches": [
+            false
+          ]
+        },
+        {
+          "id": "census-002",
+          "sha256": "7b5ebcc849d56139d731a88012da3fd871be0166c43e9c1d36b4a1c3c554656a",
+          "cer": 1.0,
+          "exact": false,
+          "complete": false,
+          "error": null,
+          "seconds": 6.065022199996747,
+          "value_matches": [
+            false
+          ]
+        },
+        {
+          "id": "census-003",
+          "sha256": "cdf94054a77bfc1760b68612846a9e1462a38d655b9d9b20fc769659a18916f4",
+          "cer": 1.0,
+          "exact": false,
+          "complete": false,
+          "error": null,
+          "seconds": 5.86196629999904,
+          "value_matches": [
+            false
+          ]
+        },
+        {
+          "id": "census-004",
+          "sha256": "6321dc0a2d5083165f6aee0517ef6a2773b685b0caf2c6e0bea6d6b4992c6ea8",
+          "cer": 1.0,
+          "exact": false,
+          "complete": false,
+          "error": null,
+          "seconds": 5.91965130000608,
+          "value_matches": [
+            false,
+            false
+          ]
+        },
+        {
+          "id": "census-005",
+          "sha256": "72c27963e50fa58a31c16829b0168191dd706f829ed3753717a80001c7f31124",
+          "cer": 1.0,
+          "exact": false,
+          "complete": false,
+          "error": null,
+          "seconds": 5.586974799982272,
+          "value_matches": [
+            false
+          ]
+        },
+        {
+          "id": "census-006",
+          "sha256": "e87aca55b54a37b1613f0d187bbc1f890d7e46b0312f05994d0fbe4c1c840e76",
+          "cer": 1.0,
+          "exact": false,
+          "complete": false,
+          "error": null,
+          "seconds": 6.181136800034437,
+          "value_matches": [
+            false
+          ]
+        },
+        {
+          "id": "census-007",
+          "sha256": "06e009ddfbb098fe43e52c88ac68029d1469f6e17587b88f7f6f4f2318a6b90b",
+          "cer": 1.0,
+          "exact": false,
+          "complete": false,
+          "error": null,
+          "seconds": 6.938187399995513,
+          "value_matches": [
+            false,
+            false,
+            false
+          ]
+        },
+        {
+          "id": "census-008",
+          "sha256": "a6182b40e4d62faef1f9fe9e99467df2a4001e44c772cc445a8746f9a8cf3c07",
+          "cer": 1.0,
+          "exact": false,
+          "complete": false,
+          "error": null,
+          "seconds": 7.2410711999982595,
+          "value_matches": [
+            false
+          ]
+        },
+        {
+          "id": "census-009",
+          "sha256": "75199f757cc0433a9a8246451f4db10bc38909f2896895ea63fdb18ce5b34bae",
+          "cer": 1.0,
+          "exact": false,
+          "complete": false,
+          "error": null,
+          "seconds": 5.362040000036359,
+          "value_matches": [
+            false,
+            false
+          ]
+        },
+        {
+          "id": "census-010",
+          "sha256": "445a857487f5b1db0a8a86b74ac2ea7ad944bce72a16384a80431eac91cacc3d",
+          "cer": 1.0,
+          "exact": false,
+          "complete": false,
+          "error": null,
+          "seconds": 5.4992848000256345,
+          "value_matches": [
+            false,
+            false
+          ]
+        },
+        {
+          "id": "census-011",
+          "sha256": "c5658720c3b9785943d5c0c47f01c23b02029f5737f7f836e247d56019677137",
+          "cer": 1.0,
+          "exact": false,
+          "complete": false,
+          "error": null,
+          "seconds": 7.09460609999951,
+          "value_matches": [
+            false,
+            false
+          ]
+        },
+        {
+          "id": "census-012",
+          "sha256": "b731b3a39f25ed0ca0036d923a42aed446b9da9afd778cd564753ac96d761233",
+          "cer": 1.0,
+          "exact": false,
+          "complete": false,
+          "error": null,
+          "seconds": 5.30358939996222,
+          "value_matches": [
+            false,
+            false
+          ]
+        },
+        {
+          "id": "census-013",
+          "sha256": "4a76228d1223ad4e586b2f6699f0ec0c22d65174bf06dbb76275a187fc50dcec",
+          "cer": 1.0,
+          "exact": false,
+          "complete": false,
+          "error": null,
+          "seconds": 5.754280499997549,
+          "value_matches": [
+            false,
+            false
+          ]
+        },
+        {
+          "id": "census-014",
+          "sha256": "b8b0e6dbff064e2541b26d970d423490b37c73040a8341fa651bb5208ec4c683",
+          "cer": 1.0,
+          "exact": false,
+          "complete": false,
+          "error": null,
+          "seconds": 6.645747400005348,
+          "value_matches": [
+            false,
+            false
+          ]
+        },
+        {
+          "id": "census-015",
+          "sha256": "361f756a6f6bb2d292c274831da1e81fee012bf011e7270cefdfa124b0bda5a7",
+          "cer": 0.35714285714285715,
+          "exact": false,
+          "complete": true,
+          "error": null,
+          "seconds": 20.97013099998003,
+          "value_matches": [
+            false,
+            false
+          ]
+        },
+        {
+          "id": "census-016",
+          "sha256": "658dff6e4d9b75b3e006956bb2b3818b2e413330e4c7b7d8a53ab94506a8e197",
+          "cer": 1.0,
+          "exact": false,
+          "complete": false,
+          "error": null,
+          "seconds": 5.5065845000208355,
+          "value_matches": [
+            false,
+            false
+          ]
+        },
+        {
+          "id": "census-017",
+          "sha256": "dc93e4a536da36bf47fe01732c70a2f98ce7722c180a0ddc63563f35865d6d97",
+          "cer": 1.0,
+          "exact": false,
+          "complete": false,
+          "error": null,
+          "seconds": 5.406417899997905,
+          "value_matches": [
+            false,
+            false
+          ]
+        },
+        {
+          "id": "census-018",
+          "sha256": "e6feb0fad66a06b0b06da5a19fad66d2a46092a99e7c52dd7f705ede8471d0fb",
+          "cer": 1.0,
+          "exact": false,
+          "complete": false,
+          "error": null,
+          "seconds": 5.406913899991196,
+          "value_matches": [
+            false
+          ]
+        },
+        {
+          "id": "census-019",
+          "sha256": "00092787e26e0291f6e0946786a676689d86cdc7fccce53dd87fd9d06eb7358a",
+          "cer": 1.0,
+          "exact": false,
+          "complete": false,
+          "error": null,
+          "seconds": 5.248770400008652,
+          "value_matches": [
+            false
+          ]
+        },
+        {
+          "id": "iam-000",
+          "sha256": "1884d7c125ddb4f9c22f4ac22da98cff82cf571b2aa85d23d06521fcd35267ea",
+          "cer": 1.0,
+          "exact": false,
+          "complete": false,
+          "error": null,
+          "seconds": 6.540632100019138,
+          "value_matches": []
+        },
+        {
+          "id": "iam-001",
+          "sha256": "57f1fb05ce5a5dc9571f603d833dacbabbe793b5dea75d04b406bb6aef9fa422",
+          "cer": 1.0,
+          "exact": false,
+          "complete": false,
+          "error": null,
+          "seconds": 11.387103299959563,
+          "value_matches": []
+        },
+        {
+          "id": "iam-002",
+          "sha256": "aa84f7ffd69f89921b562001290c77308a14ec3df940beb28735e1e68cd017c5",
+          "cer": 1.0,
+          "exact": false,
+          "complete": false,
+          "error": null,
+          "seconds": 8.67027770000277,
+          "value_matches": []
+        },
+        {
+          "id": "iam-003",
+          "sha256": "81bf15677e8d12897378f2cb96223ee06b5fe0c0c42ee55ef2336d6f80806ca7",
+          "cer": 0.057692307692307696,
+          "exact": false,
+          "complete": true,
+          "error": null,
+          "seconds": 12.375688799947966,
+          "value_matches": []
+        },
+        {
+          "id": "iam-004",
+          "sha256": "339d3bdff3fb67278a9bd4e4eee20b3573b7c0e35d4f006a0f4b5cefaa960e57",
+          "cer": 1.0,
+          "exact": false,
+          "complete": false,
+          "error": null,
+          "seconds": 10.112910000025295,
+          "value_matches": []
+        },
+        {
+          "id": "iam-005",
+          "sha256": "85cf97c5dbecdf6db8420e5737cb1a92bfab3b6a1e12795a2077054054069c9f",
+          "cer": 0.016666666666666666,
+          "exact": false,
+          "complete": true,
+          "error": null,
+          "seconds": 11.755326899990905,
+          "value_matches": []
+        },
+        {
+          "id": "iam-006",
+          "sha256": "7f740d2d11a3598b597b4876e73fe485e485cfc74141fd6eefd9c42989871ef8",
+          "cer": 0.17777777777777778,
+          "exact": false,
+          "complete": true,
+          "error": null,
+          "seconds": 9.114719300006982,
+          "value_matches": []
+        },
+        {
+          "id": "iam-007",
+          "sha256": "fd62654075c2ba75aa76f24daed8496b5336c753b794976af4cd723ba6570abf",
+          "cer": 0.0,
+          "exact": true,
+          "complete": true,
+          "error": null,
+          "seconds": 10.074902500025928,
+          "value_matches": []
+        },
+        {
+          "id": "iam-008",
+          "sha256": "5a4e872c7f2abe34b03e973601b12d422f58bc3e9075a297b9b143dcdfbd9e7f",
+          "cer": 1.0,
+          "exact": false,
+          "complete": false,
+          "error": null,
+          "seconds": 5.965012300002854,
+          "value_matches": []
+        },
+        {
+          "id": "iam-009",
+          "sha256": "7fcd02dcd8115e01050321e214701c2bee6d26bff10c0decabcbda29167f4a51",
+          "cer": 1.0,
+          "exact": false,
+          "complete": false,
+          "error": null,
+          "seconds": 5.868864800024312,
+          "value_matches": []
+        },
+        {
+          "id": "iam-010",
+          "sha256": "b51d2474632c169446eef5b224d39c49d688f3ab5b3efb00751ed7480c8bbc23",
+          "cer": 1.0,
+          "exact": false,
+          "complete": false,
+          "error": null,
+          "seconds": 6.142705000005662,
+          "value_matches": []
+        },
+        {
+          "id": "iam-011",
+          "sha256": "38aaafb5f91d1c28aa6f4519140c59633c7e5d865a53dd0d1466825ba7ba8045",
+          "cer": 1.0,
+          "exact": false,
+          "complete": false,
+          "error": null,
+          "seconds": 5.721912999986671,
+          "value_matches": []
+        },
+        {
+          "id": "iam-012",
+          "sha256": "b8ab5f9be8aeb7f8254b24b68a34aa1aacdcca85a69f59e871fc18c53c01860c",
+          "cer": 1.0,
+          "exact": false,
+          "complete": false,
+          "error": null,
+          "seconds": 5.283949100004975,
+          "value_matches": []
+        },
+        {
+          "id": "iam-013",
+          "sha256": "d02c6de80a4a35927110901448ea4a256a9dfa98c0e1e1906804fef596c92409",
+          "cer": 1.0,
+          "exact": false,
+          "complete": false,
+          "error": null,
+          "seconds": 6.203463300014846,
+          "value_matches": []
+        },
+        {
+          "id": "iam-014",
+          "sha256": "1a776b19ca95c1924b89c87c2e158a7baaf5b0ed332a3ce3ddb3a3e41f11a17f",
+          "cer": 0.1896551724137931,
+          "exact": false,
+          "complete": true,
+          "error": null,
+          "seconds": 12.288874399964698,
+          "value_matches": []
+        },
+        {
+          "id": "iam-015",
+          "sha256": "930c3f7a19ed7335c354a24cd9348b004f6d447b536449872fd8233a22e35bd3",
+          "cer": 0.02564102564102564,
+          "exact": false,
+          "complete": true,
+          "error": null,
+          "seconds": 9.841783299983945,
+          "value_matches": []
+        },
+        {
+          "id": "iam-016",
+          "sha256": "28a956938568e568326d62572f7b29957094719358ece49c9bfc48aa9936614c",
+          "cer": 1.0,
+          "exact": false,
+          "complete": false,
+          "error": null,
+          "seconds": 5.472957999969367,
+          "value_matches": []
+        },
+        {
+          "id": "iam-017",
+          "sha256": "7c210007e570a49676e7d687ac35218180ce6876eb2d45c1268ede2f31255bb0",
+          "cer": 0.0,
+          "exact": true,
+          "complete": true,
+          "error": null,
+          "seconds": 7.693786600022577,
+          "value_matches": []
+        },
+        {
+          "id": "iam-018",
+          "sha256": "b0ef2cbb284a25fea2f05ab0c4f0b123a64c76e215f655e7174a7f133ed5270b",
+          "cer": 0.045454545454545456,
+          "exact": false,
+          "complete": true,
+          "error": null,
+          "seconds": 8.21293219999643,
+          "value_matches": []
+        },
+        {
+          "id": "iam-019",
+          "sha256": "6e03f06454a2108aec9b66fc96142954b3f43d8057b628f8ccd24851c461a254",
+          "cer": 1.0,
+          "exact": false,
+          "complete": false,
+          "error": null,
+          "seconds": 5.959906200005207,
+          "value_matches": []
+        },
+        {
+          "id": "synthetic-lines-000",
+          "sha256": "b3a27fc388443d2d6df15d53d065142adbf609149601f7b33eac6d3bb353d578",
+          "cer": 0.0,
+          "exact": true,
+          "complete": true,
+          "error": null,
+          "seconds": 8.035501900012605,
+          "value_matches": [
+            true
+          ]
+        },
+        {
+          "id": "synthetic-lines-001",
+          "sha256": "b5534bb363ed9a882b0a42cb6c580c3d42d86ffef4cb546c060321ecda43ab5e",
+          "cer": 0.0,
+          "exact": true,
+          "complete": true,
+          "error": null,
+          "seconds": 9.72321850003209,
+          "value_matches": [
+            true
+          ]
+        },
+        {
+          "id": "synthetic-lines-002",
+          "sha256": "0789627c012df0902ae8b0efaf7a800f8c6cf6063ac4a18e8996e98c5ee1d472",
+          "cer": 0.0,
+          "exact": true,
+          "complete": true,
+          "error": null,
+          "seconds": 8.56704140000511,
+          "value_matches": [
+            true
+          ]
+        },
+        {
+          "id": "synthetic-lines-003",
+          "sha256": "58baabbe4bf687419db244b8a5d81b455caf2af14fa93007fc474d51fd231030",
+          "cer": 0.0,
+          "exact": true,
+          "complete": true,
+          "error": null,
+          "seconds": 8.87668789998861,
+          "value_matches": [
+            true
+          ]
+        },
+        {
+          "id": "synthetic-lines-004",
+          "sha256": "7ef8756163feab72710704ca69d526e2a6f8a33ef2d3268a07d259746111972b",
+          "cer": 0.043478260869565216,
+          "exact": false,
+          "complete": true,
+          "error": null,
+          "seconds": 11.050533799978439,
+          "value_matches": [
+            false
+          ]
+        },
+        {
+          "id": "synthetic-lines-005",
+          "sha256": "cdfd6118b3e5dbbf22c99afa69c8794f493f3c78184675de95d3d0c8d462861a",
+          "cer": 0.0,
+          "exact": true,
+          "complete": true,
+          "error": null,
+          "seconds": 6.781154699972831,
+          "value_matches": [
+            true
+          ]
+        },
+        {
+          "id": "synthetic-lines-006",
+          "sha256": "62acad353bba1ef7c4d071280b56da18f7e9cbd377190c76d7e1ff596aa12687",
+          "cer": 0.1111111111111111,
+          "exact": false,
+          "complete": true,
+          "error": null,
+          "seconds": 9.192025099997409,
+          "value_matches": [
+            true
+          ]
+        },
+        {
+          "id": "synthetic-lines-007",
+          "sha256": "bc3f4957a0e3127e9b4bd33a6689a9f8788edae2fd8fca6127a63b54d0bd34a8",
+          "cer": 0.0,
+          "exact": true,
+          "complete": true,
+          "error": null,
+          "seconds": 7.721418900007848,
+          "value_matches": [
+            true
+          ]
+        },
+        {
+          "id": "synthetic-lines-008",
+          "sha256": "7758585706e6dbfd6266cfade11adc812c6389564229d9b79a1744996bebafa0",
+          "cer": 0.0,
+          "exact": true,
+          "complete": true,
+          "error": null,
+          "seconds": 7.295226900023408,
+          "value_matches": [
+            true
+          ]
+        },
+        {
+          "id": "synthetic-lines-009",
+          "sha256": "b6b9abdd611b2cae61953c3fcab16cad4a5fd93999dda8e0e7dd93263c1cdef5",
+          "cer": 0.047619047619047616,
+          "exact": false,
+          "complete": true,
+          "error": null,
+          "seconds": 9.326569000026211,
+          "value_matches": [
+            false
+          ]
+        },
+        {
+          "id": "synthetic-lines-010",
+          "sha256": "a88234ebe22e31a2659c1b5712e0c4b9199c1fe7922a959bc47407e84964b9a8",
+          "cer": 0.0,
+          "exact": true,
+          "complete": true,
+          "error": null,
+          "seconds": 16.92918129998725,
+          "value_matches": [
+            true
+          ]
+        },
+        {
+          "id": "synthetic-lines-011",
+          "sha256": "79f9f4cd9b12485512fa3fb0eadf59c8b9fe55269c9ae57c10cc826acff920bf",
+          "cer": 0.0,
+          "exact": true,
+          "complete": true,
+          "error": null,
+          "seconds": 7.177345100033563,
+          "value_matches": [
+            true
+          ]
+        },
+        {
+          "id": "synthetic-lines-012",
+          "sha256": "95995fa3de77bbfdee82583292ac6ece4bd903e9ff0e6b93e680883ce701ec4f",
+          "cer": 0.0,
+          "exact": true,
+          "complete": true,
+          "error": null,
+          "seconds": 11.017498400004115,
+          "value_matches": [
+            true
+          ]
+        },
+        {
+          "id": "synthetic-lines-013",
+          "sha256": "dd7c2542deb896ea20aeb84070c593a147b5499d6ee99f5459818df4b9478756",
+          "cer": 0.0,
+          "exact": true,
+          "complete": true,
+          "error": null,
+          "seconds": 9.874370599980466,
+          "value_matches": [
+            true
+          ]
+        },
+        {
+          "id": "synthetic-lines-014",
+          "sha256": "fc69e8e985965d3911d95968d201bb158676380bf5618d113e22f9e9edf8b522",
+          "cer": 0.0,
+          "exact": true,
+          "complete": true,
+          "error": null,
+          "seconds": 7.769238899985794,
+          "value_matches": [
+            true
+          ]
+        },
+        {
+          "id": "synthetic-lines-015",
+          "sha256": "7bbfc1fcaead0624ddcb7effd41e32856be2c8871724e529850df34e1289bb00",
+          "cer": 0.0,
+          "exact": true,
+          "complete": true,
+          "error": null,
+          "seconds": 10.856813299993519,
+          "value_matches": [
+            true
+          ]
+        },
+        {
+          "id": "synthetic-lines-016",
+          "sha256": "6b1986a43ce470341993aa4697931853a5e3347eade86cd91da051ed37657dd3",
+          "cer": 0.0,
+          "exact": true,
+          "complete": true,
+          "error": null,
+          "seconds": 7.518233300012071,
+          "value_matches": [
+            true
+          ]
+        },
+        {
+          "id": "synthetic-lines-017",
+          "sha256": "fe3ca70f58547e9d3a60969b4edb9a467621f8c4972f5cf00e00e8101605ecf3",
+          "cer": 0.0,
+          "exact": true,
+          "complete": true,
+          "error": null,
+          "seconds": 10.583396599977277,
+          "value_matches": [
+            true
+          ]
+        },
+        {
+          "id": "synthetic-lines-018",
+          "sha256": "6ca56a5da6bc5ffd50137e0866e198f9d9fc05e2e81215bdb11ba2624aca8682",
+          "cer": 0.0,
+          "exact": true,
+          "complete": true,
+          "error": null,
+          "seconds": 9.963543799996842,
+          "value_matches": [
+            true
+          ]
+        },
+        {
+          "id": "synthetic-lines-019",
+          "sha256": "4508cf06b6ee339902a28efaaacf3f11adf6af9025bd5fef975bc8e645ed7f1b",
+          "cer": 0.0,
+          "exact": true,
+          "complete": true,
+          "error": null,
+          "seconds": 10.504178399976809,
+          "value_matches": [
+            true
+          ]
+        }
+      ]
+    },
+    "unlimited-white": {
+      "engine": "unlimited",
+      "date": "2026-10-31T17:29:58+0100",
+      "glm_max_side": null,
+      "unlimited_direct_cuda": true,
+      "unlimited_white_page": true,
+      "qualification": "Public line crops and fictitious scan fixtures; not production redaction qualification.",
+      "resources": {
+        "worker": {
+          "path": "D:\\Proyectos\\herramientas\\reglas\\src\\llm\\unlimited-ocr.py",
+          "sha256": "3e71606d57d8c912589861545a1f1e19dd736f45058a6a2c057dc14b0fbd8935"
+        }
+      },
+      "model_identity": {
+        "model": "baidu/Unlimited-OCR-2",
+        "revision": "c14071b549f4fcab10909f3c4acc6a2edb366947"
+      },
+      "executed_worker": {
+        "path": "eval\\ocr-candidates-2026-10-31-rerun\\unlimited-white\\adapter\\unlimited-ocr.py",
+        "sha256": "76fdec0ebb9a72e8d67fb1662021a3671991510ad9a3106b763cff1fd02c3687"
+      },
+      "startup_seconds": 72.79828270000871,
+      "summary": {
+        "census": {
+          "samples": 5,
+          "mean_cer": 0.4346031746031746,
+          "exact": 0.0,
+          "literal_value_recall": 0.14285714285714285,
+          "value_count": 7,
+          "median_seconds": 17.800125499954447,
+          "failures": 2
+        },
+        "iam": {
+          "samples": 5,
+          "mean_cer": 0.03284508174752077,
+          "exact": 0.2,
+          "literal_value_recall": null,
+          "value_count": 0,
+          "median_seconds": 9.575476400030311,
+          "failures": 0
+        },
+        "synthetic-lines": {
+          "samples": 5,
+          "mean_cer": 0.19440993788819877,
+          "exact": 0.6,
+          "literal_value_recall": 0.6,
+          "value_count": 5,
+          "median_seconds": 9.503173900011461,
+          "failures": 0
+        }
+      },
+      "label": "Unlimited 2 white paper",
+      "sampleCount": 15,
+      "requestSeconds": 248.1396628000075,
+      "sourceReceiptSha256": "cd87670cf9459065fba17af3469a329926c06e11e15745f12a3e15114bcb7c92",
+      "samples": [
+        {
+          "id": "census-000",
+          "sha256": "439f1736d0a66b97c793e7203d487162bfba9d8115c63865cde066882a2ec0ab",
+          "cer": 0.42857142857142855,
+          "exact": false,
+          "complete": true,
+          "error": null,
+          "seconds": 20.553229000011925,
+          "value_matches": [
+            false,
+            false
+          ],
+          "processedImageSha256": "a57e0ed81b8a3682719c117bf4e54fe17c50d058a00890b466f931d21ed3a75e"
+        },
+        {
+          "id": "census-001",
+          "sha256": "d0dc38467bd43c46e75b252eee0b9d3b12a7f822c7890c2b7a3867e18fbf7cb5",
+          "cer": 1.0,
+          "exact": false,
+          "complete": false,
+          "error": null,
+          "seconds": 6.202872599998955,
+          "value_matches": [
+            false
+          ],
+          "processedImageSha256": "2f41c763404344fc1a8cf9548df10093c6b5f1f13b3b670de77785cecec10068"
+        },
+        {
+          "id": "census-002",
+          "sha256": "7b5ebcc849d56139d731a88012da3fd871be0166c43e9c1d36b4a1c3c554656a",
+          "cer": 0.5,
+          "exact": false,
+          "complete": false,
+          "error": null,
+          "seconds": 90.02597090002382,
+          "value_matches": [
+            false
+          ],
+          "processedImageSha256": "059c0b6e7a2e3cf834c838ef2f23bce6b78b964be9c9d94fa1632ea23027ffd0"
+        },
+        {
+          "id": "census-003",
+          "sha256": "cdf94054a77bfc1760b68612846a9e1462a38d655b9d9b20fc769659a18916f4",
+          "cer": 0.1111111111111111,
+          "exact": false,
+          "complete": true,
+          "error": null,
+          "seconds": 10.476893900020514,
+          "value_matches": [
+            false
+          ],
+          "processedImageSha256": "663354dd9a8021510c7f31d22aa7f12fbd79535bf9321c09b4c68f25bff88807"
+        },
+        {
+          "id": "census-004",
+          "sha256": "6321dc0a2d5083165f6aee0517ef6a2773b685b0caf2c6e0bea6d6b4992c6ea8",
+          "cer": 0.13333333333333333,
+          "exact": false,
+          "complete": true,
+          "error": null,
+          "seconds": 17.800125499954447,
+          "value_matches": [
+            false,
+            true
+          ],
+          "processedImageSha256": "fdbeede409ab1edc31beedd1dcbdc08d6679f6edc52e5d51a894ddc833a8c2c6"
+        },
+        {
+          "id": "iam-000",
+          "sha256": "1884d7c125ddb4f9c22f4ac22da98cff82cf571b2aa85d23d06521fcd35267ea",
+          "cer": 0.0,
+          "exact": true,
+          "complete": true,
+          "error": null,
+          "seconds": 11.754105200001504,
+          "value_matches": [],
+          "processedImageSha256": "b2eb0fcb10c3cf24f0ee15eda40e7caa3c1b07b651fc9f069bdb6b554ef3e3dd"
+        },
+        {
+          "id": "iam-001",
+          "sha256": "57f1fb05ce5a5dc9571f603d833dacbabbe793b5dea75d04b406bb6aef9fa422",
+          "cer": 0.024390243902439025,
+          "exact": false,
+          "complete": true,
+          "error": null,
+          "seconds": 9.555085800006054,
+          "value_matches": [],
+          "processedImageSha256": "6675218f0858d02b312986fb76d4fce2762271c6a4e741d02ca3ee1f07d773c7"
+        },
+        {
+          "id": "iam-002",
+          "sha256": "aa84f7ffd69f89921b562001290c77308a14ec3df940beb28735e1e68cd017c5",
+          "cer": 0.05357142857142857,
+          "exact": false,
+          "complete": true,
+          "error": null,
+          "seconds": 9.575476400030311,
+          "value_matches": [],
+          "processedImageSha256": "832a4d8ade8f9bc825bf31f6681f7d8782cdb7f40856536f0d83a23e8fd425f3"
+        },
+        {
+          "id": "iam-003",
+          "sha256": "81bf15677e8d12897378f2cb96223ee06b5fe0c0c42ee55ef2336d6f80806ca7",
+          "cer": 0.057692307692307696,
+          "exact": false,
+          "complete": true,
+          "error": null,
+          "seconds": 10.52798640000401,
+          "value_matches": [],
+          "processedImageSha256": "8864c996e406fc25b9e367409051bf665981f8e5368cf4c12ad7db7dca82e506"
+        },
+        {
+          "id": "iam-004",
+          "sha256": "339d3bdff3fb67278a9bd4e4eee20b3573b7c0e35d4f006a0f4b5cefaa960e57",
+          "cer": 0.02857142857142857,
+          "exact": false,
+          "complete": true,
+          "error": null,
+          "seconds": 8.310267099994235,
+          "value_matches": [],
+          "processedImageSha256": "b9feadab5e7f2bc449abcd498c7c8ba2bb9e39c159679568045feb56a924aeea"
+        },
+        {
+          "id": "synthetic-lines-000",
+          "sha256": "b3a27fc388443d2d6df15d53d065142adbf609149601f7b33eac6d3bb353d578",
+          "cer": 0.0,
+          "exact": true,
+          "complete": true,
+          "error": null,
+          "seconds": 7.011594699986745,
+          "value_matches": [
+            true
+          ],
+          "processedImageSha256": "668afe59577f8ebe5080a5142c4fe9cd2579782ed5cda1c8ff36dd5cb318ca36"
+        },
+        {
+          "id": "synthetic-lines-001",
+          "sha256": "b5534bb363ed9a882b0a42cb6c580c3d42d86ffef4cb546c060321ecda43ab5e",
+          "cer": 0.0,
+          "exact": true,
+          "complete": true,
+          "error": null,
+          "seconds": 9.096738799999002,
+          "value_matches": [
+            true
+          ],
+          "processedImageSha256": "3c061fffbe0f61461d97b0e8d259bbf826cf553db66a7efd9e52a9d7d1f6115a"
+        },
+        {
+          "id": "synthetic-lines-002",
+          "sha256": "0789627c012df0902ae8b0efaf7a800f8c6cf6063ac4a18e8996e98c5ee1d472",
+          "cer": 0.9285714285714286,
+          "exact": false,
+          "complete": true,
+          "error": null,
+          "seconds": 13.590308799990453,
+          "value_matches": [
+            false
+          ],
+          "processedImageSha256": "d0a054f5e0e6a692e3a6f13430c5095b5846a7d4c29302b66f0311803dba6954"
+        },
+        {
+          "id": "synthetic-lines-003",
+          "sha256": "58baabbe4bf687419db244b8a5d81b455caf2af14fa93007fc474d51fd231030",
+          "cer": 0.0,
+          "exact": true,
+          "complete": true,
+          "error": null,
+          "seconds": 9.503173900011461,
+          "value_matches": [
+            true
+          ],
+          "processedImageSha256": "5aca8ec7981c4ad4a393ab33c5dbc4cd2297844f3f4776a5a87abb30cccf9f12"
+        },
+        {
+          "id": "synthetic-lines-004",
+          "sha256": "7ef8756163feab72710704ca69d526e2a6f8a33ef2d3268a07d259746111972b",
+          "cer": 0.043478260869565216,
+          "exact": false,
+          "complete": true,
+          "error": null,
+          "seconds": 14.155833799974062,
+          "value_matches": [
+            false
+          ],
+          "processedImageSha256": "8cd2d32ed05cd7253ab36987ce21561b05f949727300827bfdc2b141fdb2c610"
+        }
+      ]
+    }
+  },
+  "pairedWhitePaperSubset": {
+    "ppocr": {
+      "census": {
+        "samples": 5,
+        "mean_cer": 0.32825396825396824,
+        "exact": 0.0,
+        "literal_value_recall": 0.2857142857142857,
+        "value_count": 7,
+        "median_seconds": 0.05996059998869896,
+        "failures": 0
+      },
+      "iam": {
+        "samples": 5,
+        "mean_cer": 0.24415170195658,
+        "exact": 0.2,
+        "literal_value_recall": null,
+        "value_count": 0,
+        "median_seconds": 0.07917679997626692,
+        "failures": 1
+      },
+      "synthetic-lines": {
+        "samples": 5,
+        "mean_cer": 0.12011326269638291,
+        "exact": 0.4,
+        "literal_value_recall": 0.4,
+        "value_count": 5,
+        "median_seconds": 0.02245530002983287,
+        "failures": 0
+      }
+    },
+    "qwen4": {
+      "census": {
+        "samples": 5,
+        "mean_cer": 0.05555555555555555,
+        "exact": 0.0,
+        "literal_value_recall": 0.7142857142857143,
+        "value_count": 7,
+        "median_seconds": 0.7158468999550678,
+        "failures": 0
+      },
+      "iam": {
+        "samples": 5,
+        "mean_cer": 0.025427499329938354,
+        "exact": 0.2,
+        "literal_value_recall": null,
+        "value_count": 0,
+        "median_seconds": 0.563362099986989,
+        "failures": 0
+      },
+      "synthetic-lines": {
+        "samples": 5,
+        "mean_cer": 0.0,
+        "exact": 1.0,
+        "literal_value_recall": 1.0,
+        "value_count": 5,
+        "median_seconds": 0.45144770003389567,
+        "failures": 0
+      }
+    },
+    "qwen8": {
+      "census": {
+        "samples": 5,
+        "mean_cer": 0.05555555555555555,
+        "exact": 0.0,
+        "literal_value_recall": 0.7142857142857143,
+        "value_count": 7,
+        "median_seconds": 1.3612678000354208,
+        "failures": 0
+      },
+      "iam": {
+        "samples": 5,
+        "mean_cer": 0.028998927901366926,
+        "exact": 0.2,
+        "literal_value_recall": null,
+        "value_count": 0,
+        "median_seconds": 0.770631899998989,
+        "failures": 0
+      },
+      "synthetic-lines": {
+        "samples": 5,
+        "mean_cer": 0.0,
+        "exact": 1.0,
+        "literal_value_recall": 1.0,
+        "value_count": 5,
+        "median_seconds": 0.7615652999957092,
+        "failures": 0
+      }
+    },
+    "glm-1024": {
+      "census": {
+        "samples": 5,
+        "mean_cer": 0.02222222222222222,
+        "exact": 0.0,
+        "literal_value_recall": 0.8571428571428571,
+        "value_count": 7,
+        "median_seconds": 2.281380900007207,
+        "failures": 0
+      },
+      "iam": {
+        "samples": 5,
+        "mean_cer": 0.028998927901366926,
+        "exact": 0.2,
+        "literal_value_recall": null,
+        "value_count": 0,
+        "median_seconds": 2.914636400004383,
+        "failures": 0
+      },
+      "synthetic-lines": {
+        "samples": 5,
+        "mean_cer": 0.03584497344088137,
+        "exact": 0.4,
+        "literal_value_recall": 0.4,
+        "value_count": 5,
+        "median_seconds": 2.4431314000394195,
+        "failures": 0
+      }
+    },
+    "unlimited-cuda": {
+      "census": {
+        "samples": 5,
+        "mean_cer": 1.0,
+        "exact": 0.0,
+        "literal_value_recall": 0.0,
+        "value_count": 7,
+        "median_seconds": 5.91965130000608,
+        "failures": 5
+      },
+      "iam": {
+        "samples": 5,
+        "mean_cer": 0.8115384615384615,
+        "exact": 0.0,
+        "literal_value_recall": null,
+        "value_count": 0,
+        "median_seconds": 10.112910000025295,
+        "failures": 4
+      },
+      "synthetic-lines": {
+        "samples": 5,
+        "mean_cer": 0.008695652173913044,
+        "exact": 0.8,
+        "literal_value_recall": 0.8,
+        "value_count": 5,
+        "median_seconds": 8.87668789998861,
+        "failures": 0
+      }
+    },
+    "unlimited-white": {
+      "census": {
+        "samples": 5,
+        "mean_cer": 0.4346031746031746,
+        "exact": 0.0,
+        "literal_value_recall": 0.14285714285714285,
+        "value_count": 7,
+        "median_seconds": 17.800125499954447,
+        "failures": 2
+      },
+      "iam": {
+        "samples": 5,
+        "mean_cer": 0.03284508174752077,
+        "exact": 0.2,
+        "literal_value_recall": null,
+        "value_count": 0,
+        "median_seconds": 9.575476400030311,
+        "failures": 0
+      },
+      "synthetic-lines": {
+        "samples": 5,
+        "mean_cer": 0.19440993788819877,
+        "exact": 0.6,
+        "literal_value_recall": 0.6,
+        "value_count": 5,
+        "median_seconds": 9.503173900011461,
+        "failures": 0
+      }
+    }
+  }
+}

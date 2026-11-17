@@ -429,6 +429,16 @@
     "{0} en {1} {2}. ": "{0} dans {1} {2}. ",
     " · guardado": " enregistré",
     "Todos los archivos": "Tous les fichiers",
-    "Paquete de IA": "Forfait IA"
+    "Paquete de IA": "Forfait IA",
+    "OCR e IA difieren o no leen con claridad {0} línea(s) de la página {1}. Se conservan ambas lecturas para revisión.": "L’OCR et l’IA divergent ou ne lisent pas clairement {0} ligne(s) de la page {1}. Les deux lectures sont conservées pour vérification.",
+    "Lectura de manuscritos no disponible en una línea de la página {0}: {1}. Se conserva el OCR original.": "Lecture manuscrite indisponible pour une ligne de la page {0} : {1}. Le texte OCR original est conservé.",
+    "La revisión OCR se detuvo tras tres errores consecutivos. Las líneas pendientes conservan el OCR original.": "La vérification OCR s’est arrêtée après trois erreurs consécutives. Les lignes en attente conservent le texte OCR original.",
+    "Revisión OCR no disponible: se conserva el texto original sin una segunda lectura.": "Vérification OCR indisponible : le texte original est conservé sans seconde lecture.",
+    "Lecturas distintas · revisar": "Lectures différentes · vérifier",
+    "Los motores OCR discrepan. Revisa ambas lecturas y la zona marcada.": "Les moteurs OCR divergent. Vérifiez les deux lectures et la zone marquée.",
+    "Comparar lecturas OCR": "Comparer les lectures OCR",
+    "OCR inicial": "OCR initial",
+    "Segunda lectura": "Seconde lecture",
+    "Sin lectura": "Aucune lecture"
   }
 }

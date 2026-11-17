@@ -19,6 +19,7 @@ class Finding:
     token: str = ""
     key: str = ""             # canonical key shared by equal values
     detail: str = ""          # human-readable note (e.g. "leído a mano", "revisar")
+    ocr_review_ids: list[str] = field(default_factory=list)
 
     def to_json(self) -> dict:
         data = asdict(self)
@@ -34,6 +35,23 @@ class OcrLine:
     char_rects: list[Rect | None] = field(default_factory=list)
     handwritten: bool = False
     engine: str = "ppocr"
+    review_reasons: tuple[str, ...] = ()
+
+
+@dataclass
+class OcrReview:
+    """Local, in-memory evidence of a second reading of a measured text region."""
+    id: str
+    page: int
+    rect: Rect
+    original: str
+    alternative: str | None
+    confidence: float
+    reasons: tuple[str, ...]
+    status: str                 # agreed | disagreed | illegible | error | unavailable
+
+    def to_json(self) -> dict:
+        return asdict(self)
 
 
 @dataclass

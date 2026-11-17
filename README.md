@@ -81,6 +81,7 @@ uv run python -m app                                      # Open the application
 ```
 
 - Handwriting OCR benchmark: `uv run python tools/benchmark_handwriting.py` → [docs/benchmark.md](docs/benchmark.md).
+- OCR second-reading selection, retained disagreements, and focused validation: [docs/ocr-review-policy.md](docs/ocr-review-policy.md).
 - Detection evaluation by category: `uv run python tools/evaluate_detection.py --scanned` → [docs/deteccion.md](docs/deteccion.md). The [2.2.1 expanded synthetic result](docs/detection-evaluation-2.2.1.md) records a held-out seed. Annotated private documents in `eval/docs/*.pdf` with matching `*.json` are excluded by default; opt in with `--private --output tmp/private-evaluation.md`. Private results are aggregate-only and inputs/results are not committed.
 - Real-window UI smoke test: `uv run python tools/ui_smoke.py`. Installed executable self-test: `Privelto.exe --selftest=report.json`. Own handwriting examples go in `eval/own/*.png` with `eval/own/labels.json`; they are not committed.
 - Offline advanced-AI package: `uv run python tools/make_offline_pack.py`.

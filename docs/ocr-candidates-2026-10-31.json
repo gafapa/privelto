@@ -1,0 +1,29 @@
+{
+  "date": "2026-10-31",
+  "status": "incomplete-resource-constrained",
+  "productionChanged": false,
+  "userDocumentsUsed": false,
+  "candidateImprovementDemonstrated": false,
+  "candidateInferiorityDemonstrated": false,
+  "baseline": {
+    "engine": "PP-OCRv5, CPU recognition and mobile CPU detector for pages",
+    "iam": {"samples": 20, "meanCer": 0.2036395593761953},
+    "census": {"samples": 20, "meanNameCer": 0.3647940947940948, "exactNameTokens": 8, "nameTokens": 33},
+    "syntheticLines": {"samples": 20, "meanCer": 0.08308261431662967, "exactLines": 12},
+    "syntheticPages": {"samples": 2, "meanCer": 0.0016339869281045752, "literalValuesPreserved": 18, "literalValuesChecked": 18}
+  },
+  "attempts": [
+    {"engine": "GLM-OCR cached Q8", "status": "two empty IAM outputs; separate page startup exceeded 90 seconds", "accuracyQualified": false},
+    {"engine": "GLM-OCR ggml-org official Q8", "revision": "65a42de1148dbed2297e922b5dbc7d9b70c36578", "status": "interrupted without completed transcription", "accuracyQualified": false,
+     "expectedArtifacts": {
+       "GLM-OCR-Q8_0.gguf": "45bc244a6446aff850521dc41f18bc8d7105ad5f0c2c8c28af04e7cc4f4d50b1",
+       "mmproj-GLM-OCR-Q8_0.gguf": "9c4b58e33e316ed142eb5dcb41abec3844d3e6e5dc361ffb782c3fa9d175141f"
+     }},
+    {"engine": "Unlimited-OCR 2", "revision": "c14071b549f4fcab10909f3c4acc6a2edb366947", "status": "180-second artifact preparation/load timeout", "accuracyQualified": false, "extendedLoadBudgetRun": false}
+  ],
+  "systemFreePhysicalRamKiBObserved": [2228700, 171912],
+  "newQwenBaselineRun": false,
+  "endToEndRedactionQualified": false,
+  "timingRankingQualified": false,
+  "rawEvidenceDirectory": "eval/ocr-candidates-2026-10-31"
+}

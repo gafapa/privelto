@@ -11,17 +11,18 @@ from collections.abc import Callable
 import numpy as np
 import pymupdf
 import regex as re
-from rapidfuzz.distance import Levenshtein
 
 from . import document, propagate, rasterize, redact, rules, sanitize, signatures, verify
 from .rules import CATEGORIES, Match, canonical
-from .types import Finding, OcrLine, Options, PageText, Rect
+from .types import Finding, OcrLine, OcrReview, Options, PageText, Rect
+from .ocr.review import normalized_reading, review_reasons
 
 Progress = Callable[[dict], None]
 EXTENDABLE = {"name", "address", "org", "health", "other"}
 PERSONAL_LABELS = re.compile(
     r"(?i)\b(?:nombre|apellidos?|d\.?n\.?i|n\.?i\.?f|n\.?i\.?e|domicilio|direcci[oó]n|tel[eé]fono|m[oó]vil|e-?mail|correo|"
-    r"firma|fdo|paciente|alumn[oa]|titular|solicitante|nacimiento|localidad|c[oó]digo\s+postal|name|address|phone)\b")
+    r"firma|fdo|paciente|alumn[oa]|titular|solicitante|nacimiento|localidad|c[oó]digo\s+postal|name|address|phone|"
+    r"nome|apelidos?|enderezo|nacemento|surname)\b")
 
 
 class Cancelled(Exception):
@@ -54,6 +55,7 @@ class Analysis:
     # have processed every document of the batch. Kept in memory only, never exported.
     deferred: list[HandwritingWork] = field(default_factory=list)
     advanced_pending: bool = False
+    ocr_reviews: list[OcrReview] = field(default_factory=list)
 
     def new_id(self, page: int) -> str:
         self.next_id += 1
@@ -178,8 +180,10 @@ def ocr_page_text(lines: list[OcrLine], texts: list[str] | None = None) -> PageT
                 boxes.append(None)
             text = texts[i]
             line = lines[i]
-            char_boxes = line.char_rects if texts[i] == line.text and len(line.char_rects) == len(text) else \
-                _uniform_boxes(text, line.rect)
+            if text != line.text:
+                char_boxes = [line.rect] * len(text)  # A generated reading has no measured character geometry.
+            else:
+                char_boxes = line.char_rects if len(line.char_rects) == len(text) else _uniform_boxes(text, line.rect)
             chars.extend(text)
             boxes.extend(char_boxes)
         chars.append("\n")
@@ -278,10 +282,16 @@ def analyze(data: bytes, filename: str, options: Options, services=None, progres
             hand_rects = [line.rect for line in lines if line.handwritten and line.confidence < 0.9]
             _detect_lines(analysis, index, [primary], hand_rects, categories, pii)
             _doubtful_handwriting(analysis, index, lines, [line.text for line in lines], native, categories)
-            if options.handwriting and any(line.handwritten for line in lines):
-                analysis.deferred.append(HandwritingWork(index, lines, [
-                    _crop_png(rendered.image, line.pixel_rect) if line.handwritten else None  # type: ignore[attr-defined]
-                    for line in lines]))
+            if options.handwriting:
+                for line in lines:
+                    context = ' '.join(other.text for other in lines if other is line or (
+                        other.rect[0] < line.rect[0] and abs((other.rect[1] + other.rect[3]) / 2
+                        - (line.rect[1] + line.rect[3]) / 2) < (line.rect[3] - line.rect[1]) * 0.6))
+                    line.review_reasons = review_reasons(line, context + ' ' + _native_left_of(native, line.rect), categories)
+                if any(line.review_reasons for line in lines):
+                    analysis.deferred.append(HandwritingWork(index, lines, [
+                        _crop_png(rendered.image, line.pixel_rect) if line.review_reasons else None  # type: ignore[attr-defined]
+                        for line in lines]))
         if faces is not None and "face" in categories:
             for box in faces.detect(rendered.image):
                 add(index, "face", None, [rendered.to_page(box)], 0.9, "face")
@@ -330,6 +340,7 @@ def advance(analysis: Analysis, options: Options, services=None, progress: Progr
     categories = set(options.categories)
     total = len(analysis.pages)
     before = len(analysis.findings)
+    failures = 0
     if llm is not None and options.handwriting and analysis.deferred:
         from .ocr.handwriting import HandwritingReader
         reader = HandwritingReader(llm)
@@ -339,20 +350,70 @@ def advance(analysis: Analysis, options: Options, services=None, progress: Progr
             progress({"stage": "handwriting", "page": work.page + 1, "total": total,
                       "message": f"Leyendo manuscritos en la página {work.page + 1}"})
             alternatives = [line.text for line in work.lines]
-            try:
-                for position, (line, crop) in enumerate(zip(work.lines, work.crops, strict=True)):
-                    if crop is not None:
-                        alternatives[position] = reader.read(_png_array(crop)) or line.text
-                        line.engine = "vlm"
-            except Exception as error:
-                analysis.notes.append(f"Lectura de manuscritos no disponible: {error}")
-                break
+            review_start = len(analysis.ocr_reviews)
+            pending = sorted(enumerate(zip(work.lines, work.crops, strict=True)),
+                             key=lambda item: 'personal-field' not in item[1][0].review_reasons)
+            for position, (line, crop) in pending:
+                if cancelled():
+                    raise Cancelled()
+                if crop is None:
+                    continue
+                review_id = f"{analysis.id}:p{work.page + 1}-l{position + 1}"
+                if failures >= 3:
+                    analysis.ocr_reviews.append(OcrReview(review_id, work.page, line.rect, line.text, None,
+                                                          line.confidence, line.review_reasons, 'unavailable'))
+                    continue
+                try:
+                    reading = reader.read(_png_array(crop))
+                except Exception as error:
+                    failures += 1
+                    analysis.ocr_reviews.append(OcrReview(review_id, work.page, line.rect, line.text, None,
+                                                          line.confidence, line.review_reasons, 'error'))
+                    analysis.notes.append(f"Lectura de manuscritos no disponible en una línea de la página {work.page + 1}: "
+                                          f"{error}. Se conserva el OCR original.")
+                    continue
+                failures = 0
+                alternatives[position] = reading
+                line.engine = "vlm"
+                status = 'illegible' if not reading.strip() or '[ilegible]' in reading.casefold() else (
+                    'agreed' if normalized_reading(reading) == normalized_reading(line.text) else 'disagreed')
+                analysis.ocr_reviews.append(OcrReview(review_id, work.page, line.rect, line.text, reading,
+                                                      line.confidence, line.review_reasons, status))
             _apply_handwriting(analysis, work, alternatives, categories, pii)
+            reviews = [review for review in analysis.ocr_reviews[review_start:]
+                       if review.status in ('disagreed', 'illegible')]
+            if reviews:
+                analysis.notes.append(f"OCR e IA difieren o no leen con claridad {len(reviews)} línea(s) de la página "
+                                      f"{work.page + 1}. Se conservan ambas lecturas para revisión.")
+        if failures >= 3:
+            analysis.notes.append("La revisión OCR se detuvo tras tres errores consecutivos. Las líneas pendientes conservan el OCR original.")
+    elif options.handwriting and analysis.deferred:
+        for work in analysis.deferred:
+            for position, (line, crop) in enumerate(zip(work.lines, work.crops, strict=True)):
+                if crop is not None:
+                    analysis.ocr_reviews.append(OcrReview(f"{analysis.id}:p{work.page + 1}-l{position + 1}", work.page,
+                                                          line.rect, line.text, None, line.confidence,
+                                                          line.review_reasons, 'unavailable'))
+        analysis.notes.append("Revisión OCR no disponible: se conserva el texto original sin una segunda lectura.")
     if options.propagate and len(analysis.findings) > before:
         _propagate(analysis, analysis.add)
     if llm is not None and options.llm_review:
         _llm_review(analysis, llm, categories, analysis.add, progress, cancelled)
+    _link_ocr_reviews(analysis)
     analysis.deferred, analysis.advanced_pending = [], False
+
+
+def _link_ocr_reviews(analysis: Analysis) -> None:
+    by_page: dict[int, list[Finding]] = {}
+    for finding in analysis.findings:
+        by_page.setdefault(finding.page, []).append(finding)
+    for review in analysis.ocr_reviews:
+        if review.status not in ('disagreed', 'illegible'):
+            continue
+        for finding in by_page.get(review.page, []):
+            if review.id not in finding.ocr_review_ids and any(
+                    _coverage(rect, [review.rect]) > 0.3 for rect in finding.rects):
+                finding.ocr_review_ids.append(review.id)
 
 
 def merge_advanced(target: Analysis, result: Analysis, base_ids: set[str]) -> list[Finding]:
@@ -361,10 +422,17 @@ def merge_advanced(target: Analysis, result: Analysis, base_ids: set[str]) -> li
     Review changes made meanwhile stay: only new findings are added, with identifiers of ``target`` (manual zones
     may have taken ids in between), and none that repeats a finding already there."""
     added = []
+    base = {finding.id: finding for finding in result.findings if finding.id in base_ids}
+    for finding in target.findings:
+        if finding.id in base:
+            finding.ocr_review_ids = list(dict.fromkeys(finding.ocr_review_ids + base[finding.id].ocr_review_ids))
+    known_reviews = {review.id for review in target.ocr_reviews}
+    target.ocr_reviews.extend(review for review in result.ocr_reviews if review.id not in known_reviews)
     for finding in result.findings:
         if finding.id in base_ids:
             continue
-        repeated = any(other.page == finding.page and (other.type == finding.type or (other.value and finding.value))
+        repeated = any(other.page == finding.page and not _distinct_readings(other, finding)
+                       and (other.type == finding.type or (other.value and finding.value))
                        and all(any(_coverage(rect, [own]) > 0.6 for own in other.rects) for rect in finding.rects)
                        for other in target.findings + added)
         if repeated:
@@ -376,7 +444,7 @@ def merge_advanced(target: Analysis, result: Analysis, base_ids: set[str]) -> li
     for page, entries in result.sources.items():
         mine = target.sources.setdefault(page, [])
         for name, text in entries:
-            if name == "ocr-alt" and not any(own == "ocr-alt" for own, _ in mine):
+            if name == "ocr-alt" and not any(own == name and item == text for own, item in mine):
                 mine.append((name, text))
     target.notes.extend(note for note in result.notes if note not in target.notes)
     target.deferred, target.advanced_pending = [], False
@@ -431,18 +499,17 @@ def _doubtful_handwriting(analysis: Analysis, index: int, lines: list[OcrLine], 
     if "handwriting" not in categories:
         return
     for position, line in enumerate(lines):
-        if not line.handwritten or (only_vlm and line.engine != "vlm"):
+        if (not line.handwritten and line.engine != "vlm") or (only_vlm and line.engine != "vlm"):
             continue
         reading = readings[position]
         if line.engine == "vlm":
             # Illegible for the model, or the two readers disagree: treat as doubtful.
-            disagreement = Levenshtein.normalized_distance(line.text.lower(), reading.lower())
-            doubtful = "[ilegible]" in reading or disagreement > 0.4
+            doubtful = not reading.strip() or "[ilegible]" in reading.casefold() or normalized_reading(line.text) != normalized_reading(reading)
         else:
             doubtful = line.confidence < 0.9
         row_text = " ".join(other.text for other in lines if abs((other.rect[1] + other.rect[3]) / 2 - (line.rect[1] + line.rect[3]) / 2)
                             < (line.rect[3] - line.rect[1]) * 0.6 and other.rect[0] < line.rect[0])
-        labelled = bool(PERSONAL_LABELS.search(row_text)) or bool(PERSONAL_LABELS.search(
+        labelled = bool(PERSONAL_LABELS.search(row_text + ' ' + line.text)) or bool(PERSONAL_LABELS.search(
             _native_left_of(native, line.rect)))
         if labelled and doubtful:
             analysis.add(index, "handwriting", None, [line.rect], 0.6, "handwriting",
@@ -455,15 +522,15 @@ def _apply_handwriting(analysis: Analysis, work: HandwritingWork, alternatives: 
     sources = analysis.sources.setdefault(index, [])
     native = next((text for name, text in sources if name == "text"), PageText("", []))
     primary = next((text for name, text in sources if name == "ocr"), None) or ocr_page_text(lines)
-    hand_rects = [line.rect for position, line in enumerate(lines) if line.handwritten and (
-        line.confidence < 0.9 or (line.engine == "vlm" and Levenshtein.normalized_distance(
-            line.text.lower(), alternatives[position].lower()) > 0.15))]
+    hand_rects = [line.rect for position, line in enumerate(lines) if (line.handwritten and line.confidence < 0.9) or (
+        line.engine == "vlm" and normalized_reading(line.text) != normalized_reading(alternatives[position]))]
     base_rects = [line.rect for line in lines if line.handwritten and line.confidence < 0.9]
     changed = [rect for rect in hand_rects if rect not in base_rects]
     if changed:
         _detect_lines(analysis, index, [primary], hand_rects, categories, pii, only_near=changed)
-    if alternatives != [line.text for line in lines]:
-        alt = ocr_page_text(lines, alternatives)
+    effective = [reading if reading.strip() else line.text for line, reading in zip(lines, alternatives, strict=True)]
+    if effective != [line.text for line in lines]:
+        alt = ocr_page_text(lines, effective)
         sources.append(("ocr-alt", alt))
         _detect_lines(analysis, index, [alt], hand_rects, categories, pii)
     _doubtful_handwriting(analysis, index, lines, alternatives, native, categories, only_vlm=True)
@@ -515,8 +582,8 @@ def _llm_review(analysis: Analysis, llm, categories: set[str], add, progress, ca
         progress({"stage": "review", "page": page + 1, "total": len(analysis.pages),
                   "message": f"Revisión con IA de la página {page + 1}"})
         page_findings = [f for f in analysis.findings if f.page == page]
-        for name, source in sources:
-            if name == "ocr-alt" or len(source.text.strip()) < 20:
+        for _name, source in sources:
+            if len(source.text.strip()) < 20:
                 continue
             known = []
             for finding in page_findings:
@@ -538,6 +605,11 @@ def _llm_review(analysis: Analysis, llm, categories: set[str], add, progress, ca
                         match.confidence, "llm", detail="propuesto por la revisión con IA")
 
 
+def _distinct_readings(first: Finding, second: Finding) -> bool:
+    return bool(first.value and second.value and set(first.ocr_review_ids) & set(second.ocr_review_ids)
+                and normalized_reading(first.value) != normalized_reading(second.value))
+
+
 def _dedupe(analysis: Analysis) -> None:
     priority = {"text": 6, "form": 6, "ai": 5, "ocr": 4, "handwriting": 4, "propagation": 3, "llm": 2,
                 "face": 5, "signature": 3, "manual": 9}
@@ -546,7 +618,7 @@ def _dedupe(analysis: Analysis) -> None:
     for finding in ordered:
         duplicate = False
         for other in kept:
-            if other.page != finding.page:
+            if other.page != finding.page or _distinct_readings(other, finding):
                 continue
             if all(any(_coverage(r, [o]) > 0.6 for o in other.rects) for r in finding.rects):
                 if other.type == finding.type or (other.value and finding.value):

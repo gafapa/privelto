@@ -112,13 +112,18 @@ def apply(doc: pymupdf.Document, findings: list[Finding], mode: str = "label", u
                       else pymupdf.PDF_REDACT_LINE_ART_REMOVE_IF_COVERED),
             text=pymupdf.PDF_REDACT_TEXT_REMOVE,
         )
+        labels: list[tuple[set[str], pymupdf.Rect]] = []
         for finding, rects in placements:
             if finding.type in BLACK_TYPES:
                 for rect in rects:
                     page.draw_rect(rect, color=None, fill=(0, 0, 0), overlay=True)
             elif mode == "label" and finding.token:
                 main = max(rects, key=lambda r: r.width)
+                review_ids = set(finding.ocr_review_ids)
+                if any(review_ids & previous and main.intersects(area) for previous, area in labels):
+                    continue  # Retain both findings, but do not overprint their replacement labels.
                 _fit_token(page, main, finding.token)
+                labels.append((review_ids, main))
         if rotation:
             page.set_rotation(rotation)
 

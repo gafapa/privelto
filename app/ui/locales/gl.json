@@ -429,6 +429,16 @@
     "{0} en {1} {2}. ": "{0} en {1} {2}. ",
     " · guardado": " gardouse",
     "Todos los archivos": "Todos os ficheiros",
-    "Paquete de IA": "Paquete AI"
+    "Paquete de IA": "Paquete AI",
+    "OCR e IA difieren o no leen con claridad {0} línea(s) de la página {1}. Se conservan ambas lecturas para revisión.": "O OCR e a IA difiren ou non len con claridade {0} liña(s) da páxina {1}. Consérvanse ambas as lecturas para revisión.",
+    "Lectura de manuscritos no disponible en una línea de la página {0}: {1}. Se conserva el OCR original.": "Lectura de manuscritos non dispoñible nunha liña da páxina {0}: {1}. Consérvase o OCR orixinal.",
+    "La revisión OCR se detuvo tras tres errores consecutivos. Las líneas pendientes conservan el OCR original.": "A revisión OCR detívose tras tres erros consecutivos. As liñas pendentes conservan o OCR orixinal.",
+    "Revisión OCR no disponible: se conserva el texto original sin una segunda lectura.": "Revisión OCR non dispoñible: consérvase o texto orixinal sen unha segunda lectura.",
+    "Lecturas distintas · revisar": "Lecturas distintas · revisar",
+    "Los motores OCR discrepan. Revisa ambas lecturas y la zona marcada.": "Os motores OCR discrepan. Revisa ambas as lecturas e a zona marcada.",
+    "Comparar lecturas OCR": "Comparar lecturas OCR",
+    "OCR inicial": "OCR inicial",
+    "Segunda lectura": "Segunda lectura",
+    "Sin lectura": "Sen lectura"
   }
 }

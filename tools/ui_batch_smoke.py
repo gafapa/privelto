@@ -18,7 +18,7 @@ import webview  # noqa: E402
 from app.api import Api, Doc  # noqa: E402
 from app.engine import pipeline, verify  # noqa: E402
 from app.engine.system import webview_gui  # noqa: E402
-from app.engine.types import Options  # noqa: E402
+from app.engine.types import OcrReview, Options  # noqa: E402
 from app.main import _ui_path  # noqa: E402
 from tests.test_security import pdf_with_text  # noqa: E402
 
@@ -196,6 +196,24 @@ def main() -> None:
                     time.sleep(0.1)
                 assert api._state.docs['d2'].revision > previous_revision, 'Reanalysis must execute before collecting coverage'
                 wait("!document.getElementById('resultsCard').hidden && !document.getElementById('btnRun').disabled")
+                # Exercise high-confidence disagreements through the real local details API.
+                doc = api._state.docs['d2']
+                rect = (40, 40, 240, 65)
+                doc.analysis.add(0, 'email', 'person@example.test', [rect], 0.999, 'ocr')
+                finding = doc.analysis.findings[-1]
+                finding.ocr_review_ids = ['synthetic-review']
+                doc.analysis.ocr_reviews = [OcrReview('synthetic-review', 0, rect, 'person@example.test',
+                                                     'person1@example.test', 0.999, ('personal-field',), 'disagreed')]
+                doc.revision += 1
+                window.evaluate_js("window.app.refreshDocuments()")
+                wait("document.querySelectorAll('.ocr-readings').length === 1")
+                window.evaluate_js("const f=document.getElementById('typeFilter');f.value='__review';f.dispatchEvent(new Event('change')); document.querySelector('.ocr-readings summary').click()")
+                wait("document.querySelector('.ocr-readings').open && document.querySelectorAll('#rowsBody tr').length === 1")
+                assert window.evaluate_js("document.querySelector('.ocr-readings dd').textContent === 'person@example.test'")
+                window.evaluate_js("document.querySelector('.ocr-readings summary').dispatchEvent(new KeyboardEvent('keydown', {key:'j',bubbles:true})); document.querySelector('#rowsBody input').click()")
+                wait("document.querySelector('#rowsBody tr.off') && document.querySelector('.ocr-readings').open")
+                window.evaluate_js("document.querySelector('.ocr-readings summary').click()")
+                wait("!document.querySelector('.ocr-readings').open")
                 if collector:
                     stop.touch()
                     _stdout, stderr = collector.communicate(timeout=30)

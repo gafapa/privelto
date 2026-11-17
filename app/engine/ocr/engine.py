@@ -7,9 +7,10 @@ import numpy as np
 from ..types import OcrLine
 from .detect import LineDetector, OrientationClassifier
 from .printed import Recognizer, crop_quad
+from .review import HANDWRITING_CONFIDENCE
 
 # Lines read with lower confidence are candidates for the handwriting model.
-HANDWRITING_CONFIDENCE = 0.985  # measured in tools/benchmark_handwriting.py (docs/benchmark.md)
+# The threshold is shared with the context-aware advanced-review selector.
 
 # cv2.rotate code that turns an image predicted as rotated by N degrees upright.
 # (The classifier answers 90 for an image turned 90° clockwise.)

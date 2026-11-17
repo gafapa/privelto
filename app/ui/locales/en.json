@@ -429,6 +429,16 @@
     "{0} en {1} {2}. ": "{0} in {1} {2}. ",
     " · guardado": " saved",
     "Todos los archivos": "All files",
-    "Paquete de IA": "AI Package"
+    "Paquete de IA": "AI Package",
+    "OCR e IA difieren o no leen con claridad {0} línea(s) de la página {1}. Se conservan ambas lecturas para revisión.": "OCR and AI disagree or cannot clearly read {0} line(s) on page {1}. Both readings are retained for review.",
+    "Lectura de manuscritos no disponible en una línea de la página {0}: {1}. Se conserva el OCR original.": "Handwriting reading unavailable for a line on page {0}: {1}. The original OCR text is retained.",
+    "La revisión OCR se detuvo tras tres errores consecutivos. Las líneas pendientes conservan el OCR original.": "OCR review stopped after three consecutive errors. Pending lines retain the original OCR text.",
+    "Revisión OCR no disponible: se conserva el texto original sin una segunda lectura.": "OCR review unavailable: the original text is retained without a second reading.",
+    "Lecturas distintas · revisar": "Different readings · review",
+    "Los motores OCR discrepan. Revisa ambas lecturas y la zona marcada.": "The OCR engines disagree. Review both readings and the marked area.",
+    "Comparar lecturas OCR": "Compare OCR readings",
+    "OCR inicial": "Initial OCR",
+    "Segunda lectura": "Second reading",
+    "Sin lectura": "No reading"
   }
 }
